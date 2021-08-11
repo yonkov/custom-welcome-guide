@@ -1,4 +1,7 @@
-Plugin is bootstrapped by running ```npx @wordpress/create-block admin-welcome-guide```. See the [Block Api WordPress documentation](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-create-block/) for more information.
+Admin Welcome Guide is a WordPress plugin, inspired by the Welcome Modal that pops up when the user opens the WordPress editor for the first time. The plugin lets you create onboarding user introduction tours to guide content creators throughout the admin area of the website.
+
+### Technical Information
+This plugin is bootstrapped by running ```npx @wordpress/create-block admin-welcome-guide```. See the [Block Api WordPress documentation](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-create-block/) for more information.
 
 ### Installation
 
