@@ -8,7 +8,7 @@ const WelcomeGuideButton = (props) => {
     return (
         <>
             <Button onClick={() => setOpen(true)}>
-                {__('Welcome Guide: “Teach NSMG Editorial Team”')}
+                {__('Welcome Guide: “Teach NSMG Editorial Team How To Code”')}
             </Button>
             {isOpen && (
                 <WelcomeGuide

@@ -19,10 +19,11 @@ const { __ } = wp.i18n;
 const { registerPlugin } = wp.plugins;
 
 /**
- * This SlotFill allows registering a UI to edit Document settings.
+ * Register the Welcome Guide in the Gutenberg document sidebar
+ * @package Admin Tour Guide
  * @see https://developer.wordpress.org/block-editor/reference-guides/slotfills/plugin-document-setting-panel/
- * 
  */
+
  const { PluginDocumentSettingPanel } = wp.editPost;
  
  const WelcomeGuidePluginDocumentSettingPanel = () => (

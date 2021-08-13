@@ -13,7 +13,7 @@
  * @package           create-block
  */
 
-/* Register the compiled js inside the build folder */
+/* Enqueue admin scripts */
 function admin_welcome_guide_plugin_script_register() {
     wp_register_script(
         'build/index.js',
@@ -23,7 +23,13 @@ function admin_welcome_guide_plugin_script_register() {
 }
 add_action( 'init', 'admin_welcome_guide_plugin_script_register' );
 
-function admin_welcome_guide_plugin_script_enqueue() {
+function admin_welcome_guide_plugin_assets_enqueue() {
     wp_enqueue_script( 'build/index.js' );
+    wp_enqueue_style(
+        'admin_welcome_guide-editor-css',
+        plugins_url( 'build/style-index.css', __FILE__ ),
+        [],
+        filemtime( plugin_dir_path( __FILE__ ) . 'build/style-index.css' )
+    );
 }
-add_action( 'enqueue_block_editor_assets', 'admin_welcome_guide_plugin_script_enqueue' );
+add_action( 'enqueue_block_editor_assets', 'admin_welcome_guide_plugin_assets_enqueue' );
