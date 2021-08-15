@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Admin Welcome Guide
- * Description:       Example block written with ESNext standard and JSX support – build step required.
+ * Description:       Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users through a friendly user admin interface. Inspired by the Welcome Guide component for the Gutenberg editor.
  * Requires at least: 5.4
  * Requires PHP:      5.6
  * Version:           0.0.1
@@ -33,3 +33,6 @@ function admin_welcome_guide_plugin_assets_enqueue() {
     );
 }
 add_action( 'enqueue_block_editor_assets', 'admin_welcome_guide_plugin_assets_enqueue' );
+
+// Create Guide Custom post type
+include_once plugin_dir_path( __FILE__ ) . 'inc/guide.php';

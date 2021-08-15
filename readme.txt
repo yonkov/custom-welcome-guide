@@ -8,14 +8,11 @@ Stable tag:        0.0.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Example block written with ESNext standard and JSX support – build step required.
+Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users. Inspired by the Welcome Guide component for the Gutenberg editor.
 
 == Description ==
 
-This is the long description. No limit, and you can use Markdown (as well as in the following sections).
-
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users through a friendly user admin interface. Inspired by the [Welcome Guide](https://developer.wordpress.org/block-editor/reference-guides/components/guide/) component for the Gutenberg editor. Maybe you are a WordPress agency or a freelancer who needs a simple and user-friendly way to showcase to your clients the cms options that you have built in the WordPress admin? Or you run a multi-authorship platform and you want to make the publishing experience for your fellow authors as easy and smooth as possible?  
 
 == Installation ==
 
@@ -49,9 +46,3 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 = 0.0.1 - August 2021 =
 * First Release
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above. This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation." Arbitrary sections will be shown below the built-in sections outlined above.
