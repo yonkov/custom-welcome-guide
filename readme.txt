@@ -1,5 +1,5 @@
 === Admin Welcome Guide ===
-Contributors:      nravota12, vlasti
+Contributors:      nravota12, VlastimirSamolov
 Tags:              user-onboarding, tour, introduction, walkthrough
 Tested up to:      5.8
 Requires at least: 5.4
