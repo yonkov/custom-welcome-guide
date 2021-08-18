@@ -1,7 +1,7 @@
 <?php
 // Creating Custom Post Type Guides
 
-function ever_Guides_custom_post_type() {
+function admin_welcome_guide_register_guides_custom_post_type() {
     $labels = [
         'name'               => __( 'Guides' ),
         'singular_name'      => __( 'Guide' ),
@@ -38,4 +38,4 @@ function ever_Guides_custom_post_type() {
     ];
     register_post_type( 'Guides', $args );
 }
-add_action( 'init', 'ever_Guides_custom_post_type', 0 );
+add_action( 'init', 'admin_welcome_guide_register_guides_custom_post_type', 0 );

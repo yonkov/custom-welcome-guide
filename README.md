@@ -26,6 +26,10 @@ This step is required if you want to enable support for ES6+ and JSX. Activate t
 
 6. [Building a required modal in the WordPress Block Editor Part 1](https://aurooba.com/building-a-required-modal-in-the-wordpress-block-editor-1/)
 
+7. [Add Entry Points to the WordPress Create Block Script](https://wholesomecode.ltd/guides/entry-points-wordpress-create-block-script/)
+
+8. [Create a Settings Page using WordPress Block Editor (Gutenberg) Components](https://wholesomecode.ltd/wordpress/create-settings-page-wordpress-gutenberg-components/)
+
 ### Next Steps
 1. Find out Why CSS is not loaded through the js
 2. Customize the styles to the welcome guide

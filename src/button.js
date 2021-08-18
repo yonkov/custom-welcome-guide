@@ -10,6 +10,12 @@ const WelcomeGuideButton = (props) => {
             <Button onClick={() => setOpen(true)}>
                 {__('Welcome Guide: “Teach NSMG Editorial Team How To Code”')}
             </Button>
+            <Button onClick={() => setOpen(true)}>
+                {__('How to Become Senior Dev')}
+            </Button>
+            <Button onClick={() => setOpen(true)}>
+                {__('How to Go to the Beach while you Work')}
+            </Button>
             {isOpen && (
                 <WelcomeGuide
                     {...props}

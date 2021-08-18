@@ -21,6 +21,7 @@ const { registerPlugin } = wp.plugins;
 /**
  * Register the Welcome Guide in the Gutenberg document sidebar
  * @package Admin Tour Guide
+ * @since 0.0.1
  * @see https://developer.wordpress.org/block-editor/reference-guides/slotfills/plugin-document-setting-panel/
  */
 
