@@ -1,6 +1,6 @@
 import { useState } from '@wordpress/element';
 import { Button } from '@wordpress/components';
-import WelcomeGuide from './guide';
+import WelcomeGuide from './templates/guide';
 const { __ } = wp.i18n;
 
 const WelcomeGuideButton = (props) => {

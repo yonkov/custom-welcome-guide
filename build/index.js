@@ -219,7 +219,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _guide__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./guide */ "./src/guide.js");
+/* harmony import */ var _templates_guide__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./templates/guide */ "./src/templates/guide.js");
 
 
 
@@ -237,7 +237,7 @@ const WelcomeGuideButton = props => {
     onClick: () => setOpen(true)
   }, __('How to Become Senior Dev')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
     onClick: () => setOpen(true)
-  }, __('How to Go to the Beach while you Work')), isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_guide__WEBPACK_IMPORTED_MODULE_3__["default"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, props, {
+  }, __('How to Go to the Beach while you Work')), isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_templates_guide__WEBPACK_IMPORTED_MODULE_3__["default"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, props, {
     onFinish: () => setOpen(false)
   })));
 };
@@ -246,70 +246,70 @@ const WelcomeGuideButton = props => {
 
 /***/ }),
 
-/***/ "./src/guide.js":
-/*!**********************!*\
-  !*** ./src/guide.js ***!
-  \**********************/
+/***/ "./src/data.js":
+/*!*********************!*\
+  !*** ./src/data.js ***!
+  \*********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helper */ "./src/helper.js");
 
 
 
-/**
- * Component for displaying the Guide
- * @package Admin Welcome Guide
- * @since 0.0.1
- * @see https://github.com/WordPress/gutenberg/tree/trunk/packages/components/src/guide
- * 
- */
+function getAllGuides() {
+  const guides = Object(_helper__WEBPACK_IMPORTED_MODULE_1__["default"])('/wp-json/wp/v2/guides');
+  console.log('fetching data..');
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", {
+    component: "nav",
+    "aria-label": "main mailbox folders"
+  }, guides && guides.map((guide, index) => Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", {
+    key: index
+  }, guide.title.rendered)));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (getAllGuides);
+
+/***/ }),
+
+/***/ "./src/helper.js":
+/*!***********************!*\
+  !*** ./src/helper.js ***!
+  \***********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
+function useFetch(url) {
+  const [data, setData] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    async function loadData() {
+      const response = await fetch(url);
 
-const WelcomeGuide = props => {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Guide"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, props, {
-    pages: [{
-      image: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
-        src: "https://s.w.org/images/block-editor/welcome-canvas.gif"
-      }),
-      content: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", {
-        className: "edit-post-welcome-guide__heading"
-      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Welcome to the block editor')), ",", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
-        className: "edit-post-welcome-guide__text"
-      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('In the WordPress editor, each paragraph, image, or video is presented as a distinct “block” of content.')))
-    }, {
-      image: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
-        src: "https://s.w.org/images/block-editor/welcome-editor.gif"
-      }),
-      content: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", {
-        className: "edit-post-welcome-guide__heading"
-      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Make each block your own')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
-        className: "edit-post-welcome-guide__text"
-      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Each block comes with its own set of controls for changing things like color, width, and alignment. These will show and hide automatically when you have a block selected.')))
-    }, {
-      image: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
-        src: "https://s.w.org/images/block-editor/welcome-library.gif"
-      }),
-      content: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", {
-        className: "edit-post-welcome-guide__heading"
-      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Get to know the block library')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
-        className: "edit-post-welcome-guide__text"
-      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('All of the blocks available to you live in the block library.')))
-    }]
-  }));
-};
+      if (!response.ok) {
+        // oups! something went wrong
+        return;
+      }
 
-/* harmony default export */ __webpack_exports__["default"] = (WelcomeGuide);
+      const posts = await response.json();
+      setData(posts);
+    }
+
+    loadData();
+  }, [url]);
+  return data;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (useFetch);
 
 /***/ }),
 
@@ -375,6 +375,80 @@ registerPlugin('welcome-guide-plugin-document-setting-panel', {
 
 /***/ }),
 
+/***/ "./src/templates/guide.js":
+/*!********************************!*\
+  !*** ./src/templates/guide.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../data */ "./src/data.js");
+
+
+
+/**
+ * Template for displaying the Welcome Guide
+ * @package Admin Welcome Guide
+ * @since 0.0.1
+ * @see https://github.com/WordPress/gutenberg/tree/trunk/packages/components/src/guide
+ * 
+ */
+
+
+
+
+const WelcomeGuide = props => {
+  return (
+    /* We need to fill the Guide component with dynamic data */
+    Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Guide"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, props, {
+      pages: [{
+        image: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+          src: "https://s.w.org/images/block-editor/welcome-canvas.gif"
+        }),
+        content: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", {
+          className: "edit-post-welcome-guide__heading"
+        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Welcome to the block editor')), ",", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
+          className: "edit-post-welcome-guide__text"
+        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('In the WordPress editor, each paragraph, image, or video is presented as a distinct “block” of content.')))
+      }, {
+        image: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+          src: "https://s.w.org/images/block-editor/welcome-editor.gif"
+        }),
+        content: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", {
+          className: "edit-post-welcome-guide__heading"
+        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Make each block your own')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
+          className: "edit-post-welcome-guide__text"
+        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Each block comes with its own set of controls for changing things like color, width, and alignment. These will show and hide automatically when you have a block selected.')))
+      }, {
+        image: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+          src: "https://s.w.org/images/block-editor/welcome-library.gif"
+        }),
+        content: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", {
+          className: "edit-post-welcome-guide__heading"
+        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Get to know the block library')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
+          className: "edit-post-welcome-guide__text"
+        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('All of the blocks available to you live in the block library.')))
+      }]
+    })) //  <DynamicGuide>
+    //  </DynamicGuide>
+
+  );
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (WelcomeGuide);
+
+/***/ }),
+
 /***/ "@wordpress/components":
 /*!************************************!*\
   !*** external ["wp","components"] ***!
@@ -405,6 +479,17 @@ registerPlugin('welcome-guide-plugin-document-setting-panel', {
 /***/ (function(module, exports) {
 
 (function() { module.exports = window["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["React"]; }());
 
 /***/ })
 

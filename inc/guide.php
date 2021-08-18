@@ -1,5 +1,9 @@
 <?php
-// Creating Custom Post Type Guides
+/**
+ * Custom Post Type Guides
+ * @package Admin Welcome Guide
+ * @since 0.0.1
+ */ 
 
 function admin_welcome_guide_register_guides_custom_post_type() {
     $labels = [
@@ -35,6 +39,8 @@ function admin_welcome_guide_register_guides_custom_post_type() {
         'publicly_queryable'  => true,
         'capability_type'     => 'page',
         'hierarchical'        => 'true',
+        'show_in_rest'        => true,
+        'rest_base'           => 'guides',
     ];
     register_post_type( 'Guides', $args );
 }

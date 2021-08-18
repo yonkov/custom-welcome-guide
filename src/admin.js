@@ -22,6 +22,7 @@ class App extends Component {
                     <div className="admin-welcome-guide__container">
                         <div className="admin-welcome-guide__title">
                             <h2>{ __( 'Admin Welcome Guide Options', 'admin-welcome-guide' ) } <Icon icon="admin-plugins" /></h2>
+                            <p>Generated with react</p>
                         </div>
                     </div>
                 </div>

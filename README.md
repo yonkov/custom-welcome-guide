@@ -31,6 +31,4 @@ This step is required if you want to enable support for ES6+ and JSX. Activate t
 8. [Create a Settings Page using WordPress Block Editor (Gutenberg) Components](https://wholesomecode.ltd/wordpress/create-settings-page-wordpress-gutenberg-components/)
 
 ### Next Steps
-1. Find out Why CSS is not loaded through the js
-2. Customize the styles to the welcome guide
-3. Figure out how to add content to the guide via the cms and the rest api?
+Check issues in Github.
