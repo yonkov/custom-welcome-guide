@@ -10,7 +10,7 @@ import './style.scss';
 /**
  * Internal dependencies
  */
-import WelcomeGuideButton from './button';
+import WelcomeGuideButton from './templates/guide-list';
 
 /**
  * add localization support 

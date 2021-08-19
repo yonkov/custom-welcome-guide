@@ -1,17 +1,17 @@
-import useFetch from './helper';
+import { useEffect, useState } from 'react';
 
-function getAllGuides() {
-    const guides = useFetch('/wp-json/wp/v2/guides');
-    console.log('fetching data..');
-  return (
-    <ul component="nav" aria-label="main mailbox folders">
-        {guides && guides.map((guide, index) => (
-        <li key={index}>
-          {guide.title.rendered}
-        </li>
-        ))}
-    </ul>
-  );
-}
+export const getPosts = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+    const response = await fetch('/wp-json/wp/v2/guides');
+    const json = await response.json();
+    setData(json);
+   };
+   getData();
+  }, []);
 
-export default getAllGuides;
+  return data;
+ };
+
+export default getPosts;

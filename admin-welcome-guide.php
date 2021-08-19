@@ -80,3 +80,33 @@ function admin_welcome_guide_page_content_callback() {
     <div id="admin-welcome-guide-wrapper" class="wrapper"></div>
     <?php
 }
+
+/**
+ * Add Featured Image Url to WP Json 
+ * @see https://stackoverflow.com/questions/33320227/wp-rest-api-angularjs-how-to-grab-featured-image-for-display-on-page
+ */
+
+// Get image URL
+function admin_welcome_guide_get_thumbnail_url( $post ) {
+    if ( has_post_thumbnail( $post['id'] ) ) {
+        $imgArray = wp_get_attachment_image_src( get_post_thumbnail_id( $post['id'] ), 'large' );
+        $imgURL   = $imgArray[0];
+        return $imgURL;
+    } else {
+        return false;
+    }
+}
+
+function admin_welcome_guide_insert_thumbnail_url() {
+    register_rest_field(
+        'guides',
+        'featured_image',  // key-name in json response
+        [
+            'get_callback'    => 'admin_welcome_guide_get_thumbnail_url',
+            'update_callback' => null,
+            'schema'          => null,
+        ]
+    );
+}
+
+add_action( 'rest_api_init', 'admin_welcome_guide_insert_thumbnail_url' );
