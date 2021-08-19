@@ -8,7 +8,7 @@ Stable tag:        0.0.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users. Inspired by the Welcome Guide component for the Gutenberg editor.
+Easily add step-by-step tours/tutorials/walkthrough guides in the WordPress admin. Inspired by the Welcome Guide component for the Gutenberg editor.
 
 == Description ==
 
