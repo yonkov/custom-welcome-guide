@@ -8,24 +8,24 @@
 
  import { __ } from '@wordpress/i18n';
  import { Guide} from '@wordpress/components';
- import {getPosts}  from './../data'
+ import { Fragment } from '@wordpress/element';
+ import { getPosts }  from './../data'
 
  const WelcomeGuide = ( props ) => {
 
   const posts = getPosts();
-  posts.length > 0 && console.log(posts);
   
    return (
     posts.length > 0 && 
       
-      <Guide { ...props } pages={ posts.map((post) => (
+      <Guide { ...props } className="admin-welcome-guide" pages={ posts.map((post) => (
         
         {
-          image: <img src={post.featured_image ? post.featured_image : ""} />,
+          image: post.featured_image ? <img src={post.featured_image} /> : '',
           content: (
             <div>
-              <h2 className="edit-post-welcome-guide__heading">{__(post.title.rendered)}</h2>,
-              <p className="edit-post-welcome-guide__text">{__(post.content.rendered)}</p>
+              <h2 className="edit-post-welcome-guide__heading">{post.title.rendered}</h2>
+              <div className="edit-post-welcome-guide__text" dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
             </div>
           )
         }

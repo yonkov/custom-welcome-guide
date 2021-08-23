@@ -1,8 +1,8 @@
 {
 	"name": "admin-welcome-guide",
 	"version": "0.0.1",
-	"description": "Example plugin written with ESNext standard and JSX support – build step required.",
-	"author": "The WordPress Contributors",
+	"description": "Welcome Guide plugin based on the Guide Gutenberg component. Written with ESNext standard and JSX support – build step required.",
+	"author": "Atanas Yonkov, Vlastimir Samolov",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {

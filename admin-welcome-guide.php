@@ -77,12 +77,13 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'admin_welcome
  */
 function admin_welcome_guide_page_content_callback() {
     ?>
-    <div id="admin-welcome-guide-wrapper" class="wrapper"></div>
+    <div id="admin-welcome-guide-wrapper" class="admin-welcome-guide-wrapper"></div>
     <?php
 }
 
 /**
- * Add Featured Image Url to WP Json 
+ * Add Featured Image Url to WP Json
+ *
  * @see https://stackoverflow.com/questions/33320227/wp-rest-api-angularjs-how-to-grab-featured-image-for-display-on-page
  */
 
@@ -111,7 +112,7 @@ function admin_welcome_guide_insert_thumbnail_url() {
 
 add_action( 'rest_api_init', 'admin_welcome_guide_insert_thumbnail_url' );
 
-/* Store default settinga */
+/* Store default settings */
 
 function admin_welcome_guide_register_settings() {
 
@@ -148,4 +149,4 @@ function admin_welcome_guide_register_settings() {
 
 }
 
-add_action( 'init', 'admin_welcome_guide_register_settings');
+add_action( 'init', 'admin_welcome_guide_register_settings' );

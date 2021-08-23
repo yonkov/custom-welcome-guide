@@ -11,6 +11,6 @@ module.exports = {
     ...defaultConfig,
     entry: {
         ...defaultConfig.entry,
-        admin: path.resolve( process.cwd(), 'src', 'admin.js' ),
+        admin: path.resolve( process.cwd(), 'src/templates', 'admin.js' ),
     }
 };

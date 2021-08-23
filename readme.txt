@@ -8,7 +8,7 @@ Stable tag:        0.0.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Easily add step-by-step tours/tutorials/walkthrough guides in the WordPress admin. Inspired by the Welcome Guide component for the Gutenberg editor.
+Easily add step-by-step tours/tutorials/walkthrough guides from the WordPress admin. Inspired by the Welcome Guide component for the Gutenberg editor.
 
 == Description ==
 
@@ -26,13 +26,9 @@ e.g.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Can I run the tour from the Classic Editor? =
 
 An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
 
 == Screenshots ==
 

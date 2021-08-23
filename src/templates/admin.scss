@@ -1,0 +1,14 @@
+/**
+ * The following styles get applied in the WordPress admin.
+ *
+ */
+
+.welcome-guide-admin-notices {
+    .components-snackbar {
+        background-color: var(--wp-admin-theme-color-darker-10);
+    }
+    .dashicons-smiley::before {
+        position: relative;
+        right: 7px;
+    }
+}
