@@ -12,6 +12,7 @@ const { __ } = wp.i18n;
 
 const WelcomeGuideButton = (props) => {
     const [isOpen, setOpen] = useState(false);
+    
     return (
         <>
             <Button onClick={() => setOpen(true)}>

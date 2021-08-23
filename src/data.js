@@ -1,3 +1,9 @@
+/**
+ * Get all Guides using the WordPress rest api
+ * @package Admin Welcome Guide
+ * @since 0.0.1
+ * @see https://developer.wordpress.org/rest-api/reference/
+ */
 import { useEffect, useState } from 'react';
 
 export const getPosts = () => {

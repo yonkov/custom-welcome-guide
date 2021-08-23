@@ -36,7 +36,7 @@ add_action( 'enqueue_block_editor_assets', 'admin_welcome_guide_editor_assets_en
 
 /* Enqueue scripts and styles for the whole WordPress admin */
 function admin_welcome_guide_admin_scripts_and_styles() {
-    wp_enqueue_script( 'admin-welcome-guide-plugin-script', plugins_url( '/', __FILE__ ) . 'build/admin.js', [ 'wp-api', 'wp-i18n', 'wp-components', 'wp-element' ], ADMIN_WELCOME_GUIDE_VERSION, true );
+    wp_enqueue_script( 'admin-welcome-guide-plugin-script', plugins_url( '/', __FILE__ ) . 'build/admin.js', [ 'wp-api', 'wp-components', 'wp-compose', 'wp-data', 'wp-element', 'wp-i18n', 'wp-notices', 'wp-polyfill' ], ADMIN_WELCOME_GUIDE_VERSION, true );
     wp_enqueue_style( 'admin-welcome-guide-plugin-style', plugins_url( '/', __FILE__ ) . 'build/admin.css', [ 'wp-components' ], filemtime( plugin_dir_path( __FILE__ ) . 'build/admin.css' ) );
 }
 
@@ -110,3 +110,42 @@ function admin_welcome_guide_insert_thumbnail_url() {
 }
 
 add_action( 'rest_api_init', 'admin_welcome_guide_insert_thumbnail_url' );
+
+/* Store default settinga */
+
+function admin_welcome_guide_register_settings() {
+
+    add_option( 'admin_welcome_guide_is_show_post', 'true' );
+    add_option( 'admin_welcome_guide_is_show_page', 'true' );
+    add_option( 'admin_welcome_guide_is_show_cpt', '' );
+
+    register_setting(
+        'awg_settings',
+        'admin_welcome_guide_is_show_post',
+        [
+            'show_in_rest' => true,
+            'type'         => 'string',
+        ]
+    );
+
+    register_setting(
+        'awg_settings',
+        'admin_welcome_guide_is_show_page',
+        [
+            'show_in_rest' => true,
+            'type'         => 'string',
+        ]
+    );
+
+    register_setting(
+        'awg_settings',
+        'admin_welcome_guide_is_show_cpt',
+        [
+            'show_in_rest' => true,
+            'type'         => 'string',
+        ]
+    );
+
+}
+
+add_action( 'init', 'admin_welcome_guide_register_settings');

@@ -15,7 +15,10 @@
 	},
 	"dependencies": {
 		"@wordpress/blocks": "^11.0.0",
-		"@wordpress/i18n": "^4.2.1"
+		"@wordpress/compose": "^5.0.1",
+		"@wordpress/data": "^6.0.0",
+		"@wordpress/i18n": "^4.2.1",
+		"@wordpress/notices": "^3.2.2"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^17.1.0"
