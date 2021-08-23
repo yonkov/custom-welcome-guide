@@ -1,7 +1,7 @@
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * All files containing `style` keyword are bundled together. The code used
- * gets applied both to the front of your site and to the editor.
+ * gets applied to the post editor.
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
@@ -19,7 +19,7 @@ const { __ } = wp.i18n;
 const { registerPlugin } = wp.plugins;
 
 /**
- * Register the Welcome Guide in the Gutenberg document sidebar
+ * Register the Welcome Guide plugin in the Gutenberg document sidebar
  * @package Admin Tour Guide
  * @since 0.0.1
  * @see https://developer.wordpress.org/block-editor/reference-guides/slotfills/plugin-document-setting-panel/
