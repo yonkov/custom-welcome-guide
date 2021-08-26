@@ -54,7 +54,7 @@ class App extends Component {
                 this.settings.fetch().then((response) => {
                     this.setState({
                         isShowPost: response['admin_welcome_guide_is_show_post'] ? response['admin_welcome_guide_is_show_post'] : '',
-                        isShowPage: response['admin_welcome_guide_is_show_page'] ? response['admin_welcome_guide_is_show_post'] : '',
+                        isShowPage: response['admin_welcome_guide_is_show_page'] ? response['admin_welcome_guide_is_show_page'] : '',
                         isShowCPT: response['admin_welcome_guide_is_show_cpt'] ? response['admin_welcome_guide_is_show_cpt'] : '',
                         isAPILoaded: true,
                     });
@@ -104,7 +104,7 @@ class App extends Component {
                     <PanelRow>
                         <ToggleControl
                             label={__('Show guides in Custom Post Types', 'admin-welcome-guide')}
-                            help={"Enable the welcome guides for custom post types. Note that they need to support the Gutenberg editor for this option to work."}
+                            help={"Enable the welcome guides for custom post types. Note that they need to use the Block editor for this option to work."}
                             checked={this.state.isShowCPT}
                             onChange={this.toggleCheckbox.bind(this, 'isShowCPT')}
                         />

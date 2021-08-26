@@ -11,36 +11,43 @@
  * Text Domain:       admin-welcome-guide
  */
 
-define( 'ADMIN_WELCOME_GUIDE_VERSION', '0.0.1' );
-
-/* Enqueue scripts and styles for the post editor */
+/* Enqueue scripts and styles for the WordPress Block editor */
 function admin_welcome_guide_editor_script_register() {
-    wp_register_script(
-        'build/index.js',
-        plugins_url( 'build/index.js', __FILE__ ),
-        [ 'wp-plugins', 'wp-edit-post', 'wp-element' ] // <== the dependencies array is important!
-    );
+    wp_register_script( 'build/index.js', plugins_url( 'build/index.js', __FILE__ ), [ 'wp-api', 'wp-plugins', 'wp-edit-post', 'wp-element' ] );
 }
 add_action( 'init', 'admin_welcome_guide_editor_script_register' );
 
 function admin_welcome_guide_editor_assets_enqueue() {
     wp_enqueue_script( 'build/index.js' );
-    wp_enqueue_style(
-        'admin_welcome_guide-editor-css',
-        plugins_url( 'build/style-index.css', __FILE__ ),
-        [],
-        filemtime( plugin_dir_path( __FILE__ ) . 'build/style-index.css' )
-    );
+    wp_enqueue_style( 'admin_welcome_guide-editor-css', plugins_url( 'build/style-index.css', __FILE__ ), [], filemtime( plugin_dir_path( __FILE__ ) . 'build/style-index.css' ) );
 }
 add_action( 'enqueue_block_editor_assets', 'admin_welcome_guide_editor_assets_enqueue' );
 
 /* Enqueue scripts and styles for the whole WordPress admin */
 function admin_welcome_guide_admin_scripts_and_styles() {
-    wp_enqueue_script( 'admin-welcome-guide-plugin-script', plugins_url( '/', __FILE__ ) . 'build/admin.js', [ 'wp-api', 'wp-components', 'wp-compose', 'wp-data', 'wp-element', 'wp-i18n', 'wp-notices', 'wp-polyfill' ], ADMIN_WELCOME_GUIDE_VERSION, true );
-    wp_enqueue_style( 'admin-welcome-guide-plugin-style', plugins_url( '/', __FILE__ ) . 'build/admin.css', [ 'wp-components' ], filemtime( plugin_dir_path( __FILE__ ) . 'build/admin.css' ) );
+    $script_asset = require plugin_dir_path( __FILE__ ) . 'build/admin.asset.php';
+    wp_enqueue_script( 'admin-welcome-guide-plugin-script', plugins_url( 'build/admin.js', __FILE__ ), $script_asset['dependencies'], $script_asset['version'], true );
+    wp_enqueue_style( 'admin-welcome-guide-plugin-style', plugins_url( 'build/admin.css', __FILE__ ), [ 'wp-components' ], filemtime( plugin_dir_path( __FILE__ ) . 'build/admin.css' ) );
 }
 
 add_action( 'admin_enqueue_scripts', 'admin_welcome_guide_admin_scripts_and_styles' );
+
+/* Throw a dismissible warning message if the Classic Editor is used for Posts and Pages*/
+function admin_welcome_guide_classic_editor_admin_notice() {
+
+    $plugin_link = '<a href="' . esc_url( get_admin_url() ) . 'edit.php?post_type=guides&page=admin_welcome_guide' . '">' . __( 'Welcome Guide', 'admin-welcome-guide' ) . '</a>';
+
+    /* translators: Plugin name*/
+    if ( get_current_screen()->base == 'post' && ( get_post_type() == 'post' || get_post_type() == 'page' ) ) {
+        printf(
+            '<div class="notice notice-warning is-dismissible"><p>' .
+            esc_html__( 'You need to use the Block Editor to take advantage of the %1$s plugin!', 'admin-welcome-guide' ) .
+            '</p></div>',
+            $plugin_link
+        );
+    }
+}
+add_action( 'admin_notices', 'admin_welcome_guide_classic_editor_admin_notice' );
 
 /* Create Guide Custom post type */
 require_once plugin_dir_path( __FILE__ ) . 'inc/guide.php';
@@ -65,8 +72,8 @@ add_action( 'admin_menu', 'admin_welcome_guide_settings_page' );
  */
 function admin_welcome_guide_settings_link( array $links ) {
     $url           = get_admin_url() . 'edit.php?post_type=guides&page=admin_welcome_guide';
-    $settings_link = '<a href="' . $url . '">' . __( 'Settings', 'admin-welcome-guide' ) . '</a>';
-      $links[]     = $settings_link;
+    $settings_link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'admin-welcome-guide' ) . '</a>';
+    $links[]       = $settings_link;
     return $links;
 }
 
@@ -112,8 +119,7 @@ function admin_welcome_guide_insert_thumbnail_url() {
 
 add_action( 'rest_api_init', 'admin_welcome_guide_insert_thumbnail_url' );
 
-/* Store default settings */
-
+/* Store default plugin's settings */
 function admin_welcome_guide_register_settings() {
 
     add_option( 'admin_welcome_guide_is_show_post', 'true' );

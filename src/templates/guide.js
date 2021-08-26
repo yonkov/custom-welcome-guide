@@ -9,7 +9,7 @@
  import { __ } from '@wordpress/i18n';
  import { Guide} from '@wordpress/components';
  import { Fragment } from '@wordpress/element';
- import { getPosts }  from './../data'
+ import { getPosts } from './../data'
 
  const WelcomeGuide = ( props ) => {
 

@@ -5,16 +5,16 @@
  * @see https://github.com/WordPress/gutenberg/tree/trunk/packages/components/src/guide
  * 
  */
-import { useState } from '@wordpress/element';
-import { Button } from '@wordpress/components';
+import { useState, Fragment } from '@wordpress/element';
+import { Button} from '@wordpress/components';
 import WelcomeGuide from './guide';
 const { __ } = wp.i18n;
 
-const WelcomeGuideButton = (props) => {
+const WelcomeGuideList = (props) => {
     const [isOpen, setOpen] = useState(false);
-    
+
     return (
-        <>
+        <Fragment>
             <Button onClick={() => setOpen(true)}>
                 {__('Welcome Guide: “Teach NSMG Editorial Team How To Code”')}
             </Button>
@@ -30,8 +30,8 @@ const WelcomeGuideButton = (props) => {
                     onFinish={() => setOpen(false)}
                 />
             )}
-        </>
-    );
+        </Fragment>
+    )
 };
 
-export default WelcomeGuideButton;
+export default WelcomeGuideList;

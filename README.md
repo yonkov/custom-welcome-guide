@@ -4,7 +4,6 @@ Admin Welcome Guide is a WordPress plugin, inspired by the [Welcome Guide](https
 This plugin is bootstrapped by running ```npx @wordpress/create-block admin-welcome-guide```. See the [Block Api WordPress documentation](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-create-block/) for more information.
 
 ### Installation
-
 Clone or download this repository, unzip it and paste it inside the ```wp-content => plugins``` folder in your WordPress installation. Go to the plugin's root folder and run:
 
     npm i
