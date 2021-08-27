@@ -6,12 +6,13 @@
  */
 
 import { Fragment, render, Component } from '@wordpress/element';
-import { Icon, Button, PanelBody, PanelRow, ToggleControl, SnackbarList, Spinner } from '@wordpress/components';
+import { Icon, Button, PanelBody, PanelRow, ToggleControl, SnackbarList, Spinner, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import api from '@wordpress/api';
 import {dispatch, useDispatch, useSelect } from '@wordpress/data';
 import { store as noticesStore } from '@wordpress/notices';
 import './admin.scss';
+import { getPosts } from './../data'
 
 const Notices = () => {
 	const notices = useSelect(
@@ -35,17 +36,18 @@ const Notices = () => {
 class App extends Component {
     constructor() {
         super(...arguments);
-
         this.state = {
             isAPILoaded: false,
             isShowPost: true,
             isShowPage: true,
-            isShowCPT: false
+            isShowCPT: false,
+            featuredPostId: '',
+            posts: ''
         };
     }
 
     componentDidMount() {
-
+        // fetch all plugin options
         api.loadPromise.then(() => {
             this.settings = new api.models.Settings();
             const { isAPILoaded } = this.state;
@@ -53,22 +55,29 @@ class App extends Component {
             if (!isAPILoaded) {
                 this.settings.fetch().then((response) => {
                     this.setState({
-                        isShowPost: response['admin_welcome_guide_is_show_post'] ? response['admin_welcome_guide_is_show_post'] : '',
-                        isShowPage: response['admin_welcome_guide_is_show_page'] ? response['admin_welcome_guide_is_show_page'] : '',
-                        isShowCPT: response['admin_welcome_guide_is_show_cpt'] ? response['admin_welcome_guide_is_show_cpt'] : '',
-                        isAPILoaded: true,
+                        isShowPost: response['awg_options']['is_show_post'] ? response['awg_options']['is_show_post'] : '',
+                        isShowPage: response['awg_options']['is_show_page'] ? response['awg_options']['is_show_page'] : '',
+                        isShowCPT: response['awg_options']['is_show_cpt'] ? response['awg_options']['is_show_cpt'] : '',
+                        featuredPostId: response['awg_options'][ 'featured_post_id' ] ? response['awg_options'][ 'featured_post_id' ] : '',
+                        isAPILoaded: true
                     });
                 });
             }
         });
-    }
+        // fetch all posts
+        fetch('/wp-json/wp/v2/guides')
+            .then((response) => response.json())
+            .then(posts => {
+                this.setState({posts: posts }); 
+            })
+        }
 
     toggleCheckbox(name) {
         this.setState({ [name]: !this.state[name] });
     }
 
     render() {
-        const { isAPILoaded } = this.state;
+        const { isAPILoaded, posts, featuredPostId } = this.state;
         if (!isAPILoaded) {
             return (
                 <Fragment>
@@ -109,16 +118,43 @@ class App extends Component {
                             onChange={this.toggleCheckbox.bind(this, 'isShowCPT')}
                         />
                     </PanelRow>
+                    <PanelRow>
+                        <SelectControl
+                            help={ __( "Choose a Featured Guide if you want to replace the Block Editor's Welcome Guide Modal that pops up when you open the Block Editor for the first time.", 'admin-welcome-guide' ) }
+                            label={ __( 'Featured Guide', 'admin-welcome-guide' ) }
+                            onChange={ ( featuredPostId ) => this.setState( { featuredPostId } ) }
+                            options={ posts && posts.map ( (post, index) => (
+                                (index==0) ? 
+                                    {
+                                        label: __( 'None', 'admin-welcome-guide' ),
+                                        value: ''
+                                    }
+                                :
+                                    {
+                                        label: __( post.title.rendered, 'admin-welcome-guide' ),
+                                        value: post.id 
+                                    }
+                            ) )
+                            }
+                            value={ featuredPostId }
+
+                        />
+                    </PanelRow>
                 </PanelBody>
                 <Button
                     isPrimary
                     onClick={() => {
                         const { isShowPost, isShowPage, isShowCPT } = this.state;
+
                         const settings = new api.models.Settings({
-                            ['admin_welcome_guide_is_show_post']: isShowPost ? 'true' : '',
-                            ['admin_welcome_guide_is_show_page']: isShowPage ? 'true' : '',
-                            ['admin_welcome_guide_is_show_cpt']: isShowCPT ? 'true' : ''
+                            awg_options: {
+                                ['is_show_post']: isShowPost ? 'true' : '',
+                                ['is_show_page']: isShowPage ? 'true' : '',
+                                ['is_show_cpt']: isShowCPT ? 'true' : '',
+                                ['featured_post_id']: featuredPostId
+                            }
                         });
+
                         settings.save();
                         dispatch('core/notices')
                             .createNotice(

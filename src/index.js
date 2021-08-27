@@ -28,9 +28,8 @@ function showGuideList() {
   const isPostEditor = document.body.className.indexOf('post-type-post') > -1;
   const isPаgeEditor = document.body.className.indexOf('post-type-page') > -1;
   const isCPTEditor = !isPostEditor && !isPаgeEditor;
-  const { isShowPost, isShowPage, isShowCPT} = pluginOptions();
+  const { isShowPost, isShowPage, isShowCPT, isAPILoaded} = pluginOptions();
   
-console.log(isShowPage);
   if (isPostEditor && isShowPost) {
     return true
   }
@@ -52,19 +51,20 @@ console.log(isShowPage);
  * @see https://developer.wordpress.org/block-editor/reference-guides/slotfills/plugin-document-setting-panel/
  */
 
-const WelcomeGuidePluginDocumentSettingPanel = () => (
-
-  showGuideList() &&
+const WelcomeGuidePluginRegisterSidebar = () => (
+  <>
+  { showGuideList() &&
   <PluginDocumentSettingPanel
     name="welcome-guide"
     title="Welcome Guide"
     className="welcome-guide"
   >
-    <GuideList />
-  </PluginDocumentSettingPanel>
-);
+  <GuideList />
+  </PluginDocumentSettingPanel>}
+  </>
+)
 
 registerPlugin('welcome-guide-plugin-document-setting-panel', {
-  render: WelcomeGuidePluginDocumentSettingPanel,
+  render: WelcomeGuidePluginRegisterSidebar,
   icon: 'welcome-view-site'
 })

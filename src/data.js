@@ -30,9 +30,10 @@ export const pluginOptions = () => {
       if (!data.isAPILoaded) {
         settings.fetch().then((response) => {
           setData({
-            isShowPost: response['admin_welcome_guide_is_show_post'] ? response['admin_welcome_guide_is_show_post'] : '',
-            isShowPage: response['admin_welcome_guide_is_show_page'] ? response['admin_welcome_guide_is_show_page'] : '',
-            isShowCPT: response['admin_welcome_guide_is_show_cpt'] ? response['admin_welcome_guide_is_show_cpt'] : '',
+            isShowPost: response['awg_options']['is_show_post'] ? response['awg_options']['is_show_post'] : '',
+            isShowPage: response['awg_options']['is_show_page'] ? response['awg_options']['is_show_page'] : '',
+            isShowCPT: response['awg_options']['is_show_cpt'] ? response['awg_options']['is_show_cpt'] : '',
+            featuredPostId: response['awg_options'][ 'featured_post_id' ] ? response['awg_options'][ 'featured_post_id' ] : '',
             isAPILoaded: true,
           })
         });

@@ -13,7 +13,7 @@
 
 /* Enqueue scripts and styles for the WordPress Block editor */
 function admin_welcome_guide_editor_script_register() {
-    wp_register_script( 'build/index.js', plugins_url( 'build/index.js', __FILE__ ), [ 'wp-api', 'wp-plugins', 'wp-edit-post', 'wp-element' ] );
+    wp_register_script( 'build/index.js', plugins_url( 'build/index.js', __FILE__ ), [ 'wp-api', 'wp-edit-post', 'wp-element' ] );
 }
 add_action( 'init', 'admin_welcome_guide_editor_script_register' );
 
@@ -99,7 +99,7 @@ function admin_welcome_guide_get_thumbnail_url( $post ) {
     if ( has_post_thumbnail( $post['id'] ) ) {
         $imgArray = wp_get_attachment_image_src( get_post_thumbnail_id( $post['id'] ), 'large' );
         $imgURL   = $imgArray[0];
-        return $imgURL;
+        return esc_url ($imgURL );
     } else {
         return false;
     }
@@ -110,47 +110,69 @@ function admin_welcome_guide_insert_thumbnail_url() {
         'guides',
         'featured_image',  // key-name in json response
         [
-            'get_callback'    => 'admin_welcome_guide_get_thumbnail_url',
-            'update_callback' => null,
-            'schema'          => null,
+            'get_callback'      => 'admin_welcome_guide_get_thumbnail_url',
+            'update_callback'   => null,
+            'schema'            => null
         ]
     );
 }
 
 add_action( 'rest_api_init', 'admin_welcome_guide_insert_thumbnail_url' );
 
-/* Store default plugin's settings */
+/**
+ * Store plugin's settings
+ * plugin options object json schema for the rest api support
+ *
+ * @since wp 5.3
+ * @see https://wordpress.stackexchange.com/questions/360207/serialized-settings-in-rest-api
+ */
 function admin_welcome_guide_register_settings() {
 
-    add_option( 'admin_welcome_guide_is_show_post', 'true' );
-    add_option( 'admin_welcome_guide_is_show_page', 'true' );
-    add_option( 'admin_welcome_guide_is_show_cpt', '' );
+    // default settings
+    $default_options = [
+        'is_show_post'     => 'true',
+        'is_show_page'     => 'true',
+        'is_show_cpt'      => '',
+        'featured_post_id' => '',
+    ];
+    add_option( 'awg_options', $default_options );
 
+    // plugin options schema prepare for the rest api
+    $general_options = [
+        'show_in_rest' => [
+            'schema' => [
+                'type'       => 'object',
+                'properties' => [
+                    'is_show_post'     => [
+                        'type'              => 'string',
+                        'default'           => 'true',
+                        'sanitize_callback' => 'sanitize_text_field',
+                    ],
+                    'is_show_page'     => [
+                        'type'              => 'string',
+                        'default'           => 'true',
+                        'sanitize_callback' => 'sanitize_text_field',
+                    ],
+                    'is_show_cpt'      => [
+                        'type'              => 'string',
+                        'default'           => '',
+                        'sanitize_callback' => 'sanitize_text_field',
+                    ],
+                    'featured_post_id' => [
+                        'type'              => 'string',
+                        'default'           => '',
+                        'sanitize_callback' => 'sanitize_text_field',
+                    ],
+                ],
+            ],
+        ],
+    ];
+
+    // register plugin options as an object
     register_setting(
         'awg_settings',
-        'admin_welcome_guide_is_show_post',
-        [
-            'show_in_rest' => true,
-            'type'         => 'string',
-        ]
-    );
-
-    register_setting(
-        'awg_settings',
-        'admin_welcome_guide_is_show_page',
-        [
-            'show_in_rest' => true,
-            'type'         => 'string',
-        ]
-    );
-
-    register_setting(
-        'awg_settings',
-        'admin_welcome_guide_is_show_cpt',
-        [
-            'show_in_rest' => true,
-            'type'         => 'string',
-        ]
+        'awg_options',
+        $general_options
     );
 
 }

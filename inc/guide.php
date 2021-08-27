@@ -25,7 +25,7 @@ function admin_welcome_guide_register_guides_custom_post_type() {
         'label'               => __( 'Guides' ),
         'description'         => __( 'Create Interactive User Guides for your Admin Users' ),
         'labels'              => $labels,
-        'supports'            => [ 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'page-attributes' ],
+        'supports'            => [ 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'page-attributes', 'custom-fields' ],
         'public'              => true,
         'hierarchical'        => false,
         'show_ui'             => true,
