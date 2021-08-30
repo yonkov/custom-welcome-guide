@@ -20,6 +20,11 @@ add_action( 'init', 'admin_welcome_guide_editor_script_register' );
 function admin_welcome_guide_editor_assets_enqueue() {
     wp_enqueue_script( 'build/index.js' );
     wp_enqueue_style( 'admin_welcome_guide-editor-css', plugins_url( 'build/style-index.css', __FILE__ ), [], filemtime( plugin_dir_path( __FILE__ ) . 'build/style-index.css' ) );
+    $script_params = [
+        'rest_url' => rest_url(),
+    ];
+    wp_localize_script('build/index.js', 'admin_welcome_guide_script_params', $script_params);
+
 }
 add_action( 'enqueue_block_editor_assets', 'admin_welcome_guide_editor_assets_enqueue' );
 
@@ -27,6 +32,10 @@ add_action( 'enqueue_block_editor_assets', 'admin_welcome_guide_editor_assets_en
 function admin_welcome_guide_admin_scripts_and_styles() {
     $script_asset = require plugin_dir_path( __FILE__ ) . 'build/admin.asset.php';
     wp_enqueue_script( 'admin-welcome-guide-plugin-script', plugins_url( 'build/admin.js', __FILE__ ), $script_asset['dependencies'], $script_asset['version'], true );
+    $script_params = [
+        'rest_url' => rest_url(),
+    ];
+    wp_localize_script('admin-welcome-guide-plugin-script', 'admin_welcome_guide_script_params', $script_params);
     wp_enqueue_style( 'admin-welcome-guide-plugin-style', plugins_url( 'build/admin.css', __FILE__ ), [ 'wp-components' ], filemtime( plugin_dir_path( __FILE__ ) . 'build/admin.css' ) );
 }
 

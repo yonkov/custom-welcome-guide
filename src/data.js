@@ -6,12 +6,12 @@
  */
 import { useEffect, useState } from 'react';
 import api from '@wordpress/api';
-
+const restUrl = admin_welcome_guide_script_params.rest_url;
 export const getPosts = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch('/wp-json/wp/v2/guides');
+      const response = await fetch( restUrl + 'wp/v2/guides');
       const json = await response.json();
       setData(json);
     };

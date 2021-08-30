@@ -1,1 +1,11 @@
-.admin-welcome-guide img{max-height:440px;-o-object-fit:cover;object-fit:cover}
+/**
+ * The following styles get applied in the post editor.
+ *
+ */
+.admin-welcome-guide img {
+  max-height: 440px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

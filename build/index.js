@@ -227,11 +227,12 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+const restUrl = admin_welcome_guide_script_params.rest_url;
 const getPosts = () => {
   const [data, setData] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     const getData = async () => {
-      const response = await fetch('/wp-json/wp/v2/guides');
+      const response = await fetch(restUrl + 'wp/v2/guides');
       const json = await response.json();
       setData(json);
     };

@@ -65,7 +65,7 @@ class App extends Component {
             }
         });
         // fetch all posts
-        fetch('/wp-json/wp/v2/guides')
+        fetch(admin_welcome_guide_script_params.rest_url + 'wp/v2/guides')
             .then((response) => response.json())
             .then(posts => {
                 this.setState({posts: posts }); 
