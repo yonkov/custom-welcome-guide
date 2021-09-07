@@ -1,6 +1,5 @@
-import { select, dispatch } from '@wordpress/data';
 import { pluginOptions } from './../data'
-import { useState, useEffect} from '@wordpress/element';
+import { useState} from '@wordpress/element';
 import WelcomeGuide from './guide';
 
 /**

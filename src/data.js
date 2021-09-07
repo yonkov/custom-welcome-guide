@@ -1,5 +1,5 @@
 /**
- * Get all Guides using the WordPress rest api
+ * Get all the guides using the WordPress rest api
  * @package Admin Welcome Guide
  * @since 0.0.1
  * @see https://developer.wordpress.org/rest-api/reference/

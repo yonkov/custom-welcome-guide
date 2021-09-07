@@ -1,8 +1,9 @@
 /**
  * The Main Js file. Written with ESNext standard and JSX support – build step required.
- * It adds and additional tab in the WordPress Block Editor (Gutenberg) sidebar.
- * The plugin takes advantage of the WordPress rest api introduced in version 4.7.
- * It uses Gutenberg components from WordPress core to load a list of user defined guides.
+ * This one gets loaded in the WordPress Block Editor
+ * It adds and additional tab in the WordPress Block Editor's sidebar.
+ * The plugin takes advantage of the WordPress rest api, introduced in version 4.7.
+ * It uses Gutenberg components from WordPress core to load a list of user-defined guides.
  * @package Admin Welcome Guide
  * @since 0.0.1
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/
@@ -21,7 +22,7 @@ import { pluginOptions } from './data'
 import { registerPlugin } from "@wordpress/plugins";
 
 /** 
- * Determine whether to show a list of guides in the Block Editor sidebar 
+ * Determine whether to show the guides in the Block Editor's sidebar 
  * Based on plugin options 
  * 
  */
@@ -46,7 +47,7 @@ function showGuideList() {
 }
 
 /**
- * Register the Welcome Guide plugin in the Block Editor sidebar
+ * Register the Welcome Guide plugin in the Block Editor's sidebar
  * @package Admin Tour Guide
  * @since 0.0.1
  * @see https://developer.wordpress.org/block-editor/reference-guides/slotfills/plugin-document-setting-panel/
