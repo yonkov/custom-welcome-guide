@@ -6,15 +6,14 @@
  * 
  */
 
- import { __ } from '@wordpress/i18n';
- import { Guide} from '@wordpress/components';
- import { getPosts } from './../data'
+import { __ } from '@wordpress/i18n';
+import { Guide } from '@wordpress/components';
+import { getPosts } from './../data'
 
- const WelcomeGuide = ( props ) => {
-  
+const WelcomeGuide = (props) => {
+
   const posts = getPosts();
-  const {parentPostId} = props;
-  console.log(parentPostId);
+  const { parentPostId } = props;
 
   /**
    * Strip potentially dangerous html tags to secure post output
@@ -25,38 +24,23 @@
   function escapeHtml(content) {
     let div = document.createElement('div');
     div.innerHTML = content;
-  
+
     let scripts = div.querySelectorAll('style, script');
     let i = scripts.length;
-  
+
     while (i--) {
       scripts[i].parentNode.removeChild(scripts[i]);
     }
-  
+
     return div.innerHTML;
   }
 
-  /**
-   * Create new array from the guides array to pull the selected guide with all its corresponding sub-guides
-   * @param {array} currentGuide 
-   * @returns new array
-   */
-   function getcurrentGuide(guides){
-    var currentGuide = [];
-    guides.forEach(guide =>{
-      if (guide.parent == parentPostId || guide.id == parentPostId){
-        currentGuide.push(guide)
-      }
-    });
+  return (
+    posts.length > 0 &&
 
-    return currentGuide;
-  }
+    <Guide {...props} className="admin-welcome-guide"
+      pages={posts.filter(post => post.parent == parentPostId || post.id == parentPostId).map((post) => (
 
-   return (
-    posts.length > 0 && 
-      
-      <Guide { ...props } pages={ getcurrentGuide(posts).map((post) => (
-        
         {
           image: post.featured_image ? <img src={post.featured_image} /> : '',
           content: (
@@ -65,14 +49,16 @@
               <div className="edit-post-welcome-guide__text" dangerouslySetInnerHTML={{ __html: escapeHtml(post.content.rendered) }} />
             </div>
           )
-        } 
+        }
 
       ))
-      
-      } >
 
-      </Guide>
-   )
- }
- 
- export default WelcomeGuide;
+      }
+
+    >
+
+    </Guide>
+  )
+}
+
+export default WelcomeGuide;

@@ -16,7 +16,6 @@ const WelcomeGuideList = (props) => {
     const posts = getPosts();
     const [postId, setPostId] = useState();
 
-
     return (
         <Fragment>
         { posts.length > 0 &&

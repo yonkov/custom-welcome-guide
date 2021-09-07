@@ -69,12 +69,34 @@ class App extends Component {
             .then((response) => response.json())
             .then(posts => {
                 this.setState({posts: posts }); 
-            })
-        }
+            }
+        )
+    }
 
     toggleCheckbox(name) {
         this.setState({ [name]: !this.state[name] });
     }
+
+    // Dynamically create select dropdown with a default option and a list with all parent guides
+    dropdownWithOptions(posts){
+        const options = [
+            {   
+                label: __( 'None', 'admin-welcome-guide' ),
+                value: ''
+            }
+        ];
+        posts.forEach(post =>{
+            if (post.parent == 0 ){
+              options.push({
+                label: __( post.title.rendered, 'admin-welcome-guide' ),
+                value: post.id 
+              })
+            }
+        });
+
+        return options
+    }
+    
 
     render() {
         const { isAPILoaded, posts, featuredPostId } = this.state;
@@ -120,21 +142,11 @@ class App extends Component {
                     </PanelRow>
                     <PanelRow>
                         <SelectControl
-                            help={ __( "Choose a Featured Guide if you want to replace the Block Editor's Welcome Guide Modal that pops up when you open the Block Editor for the first time.", 'admin-welcome-guide' ) }
+                            help={ __( "Choose a Featured Guide if you want to replace the Block Editor's default Welcome Guide Modal that pops up when you open the Block Editor for the first time.", 'admin-welcome-guide' ) }
                             label={ __( 'Featured Guide', 'admin-welcome-guide' ) }
                             onChange={ ( featuredPostId ) => this.setState( { featuredPostId } ) }
-                            options={ posts && posts.map ( (post, index) => (
-                                (index==0) ? 
-                                    {
-                                        label: __( 'None', 'admin-welcome-guide' ),
-                                        value: ''
-                                    }
-                                :
-                                    {
-                                        label: __( post.title.rendered, 'admin-welcome-guide' ),
-                                        value: post.id 
-                                    }
-                            ) )
+                            options= {
+                                 posts && this.dropdownWithOptions(posts)
                             }
                             value={ featuredPostId }
 
@@ -144,6 +156,7 @@ class App extends Component {
                 <Button
                     isPrimary
                     onClick={() => {
+                        localStorage.removeItem('admin-welcome-guide');
                         const { isShowPost, isShowPage, isShowCPT } = this.state;
 
                         const settings = new api.models.Settings({

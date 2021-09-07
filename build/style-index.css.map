@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/style.scss"],"names":[],"mappings":"AAAA;;;EAAA;AAKI;EACI;EACA;KAAA;AAAR,C","file":"style-index.css","sourcesContent":["/**\r\n * The following styles get applied in the post editor.\r\n *\r\n */\r\n.admin-welcome-guide {\r\n    img {\r\n        max-height: 440px;\r\n        object-fit: cover;\r\n    }\r\n}"],"sourceRoot":""}

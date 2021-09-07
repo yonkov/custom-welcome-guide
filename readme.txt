@@ -29,27 +29,30 @@ You first need to navigate to the Guides tab in the WordPress admin and add a ne
 From your WordPress admin dashboard, navigate to Guides tab and add a new Guide. 
 
 == How to create additional popups to the guide?
-To add more screens (steps) to the guide, create a new guide and link it to the parent guide via the ```Page Attributes``` tab from the right sidebar.
+To add more screens (steps / sub-guides) to the guide, create a new guide and link it to the parent guide via the ```Page Attributes``` tab from the right sidebar in the Block Editor.
 
 = Can I create more than one guide? =
 Absolutely! You can create as many guides as you want and link as many screens to them as you wish. A list with all the guides will be visible in the ```Welcome Guide``` tab from the block editor's sidebar.
 
-= How to run the guides? =
+= How to run a guide? =
 When you are creating or editing a post, a "Welcome Guide" tab will be visible in the Block Editor's sidebar. Expand the tab and you will see a list with all the guides.
 
 = Can I disable or customize the default Welcome Guide? =
-When an editor opens the Block Editor for the first time, the default Welcome Guide modal pops up. To remove the default welcome message, go to the plugin's settings page and check the option "disable the default Welcome Guide". 
-To replace the default welcome tips with a custom welcome message, you also need to select a featured guide from the guides' dropdown list in the plugin's settings page.
+When an editor opens the Block Editor for the first time, the default Welcome Guide modal pops up. To remove the default welcome message, simply go to the plugin's settings page and select a featured guide from the dropdown list. 
+In this way, you can replace the default welcome tips with a custom welcome message.
+
+= Can I disable the guides for a specific post type? =
+Sure, you can remove the list with the guides in the Block Editor's sidebar for a specific post type, e.g. pages. Go to the plugin's options page and remove the tick on the toggle button for the respective post type.
 
 = Can I run the guides from the frontend? =
 No, the scope of the plugin is to help your admin users or editors with the cms options and runs only from the WordPress block editor's screen.
 
 = Can I run the guides from the Classic Editor? =
-No, the plugin takes advantage of the pre-built Gutenberg components from the WordPress core and can only work with the Block editor.
+No, the plugin takes advantage of the pre-built Gutenberg components from the WordPress core. They get loaded only when you are using the Block editor.
 
 == Screenshots ==
 
 == Changelog ==
 
-= 0.0.1 - August 2021 =
+= 0.0.1 - September 2021 =
 * First Release

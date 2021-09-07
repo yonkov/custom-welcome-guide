@@ -23,7 +23,7 @@ function admin_welcome_guide_editor_assets_enqueue() {
     $script_params = [
         'rest_url' => rest_url(),
     ];
-    wp_localize_script('build/index.js', 'admin_welcome_guide_script_params', $script_params);
+    wp_localize_script( 'build/index.js', 'admin_welcome_guide_script_params', $script_params );
 
 }
 add_action( 'enqueue_block_editor_assets', 'admin_welcome_guide_editor_assets_enqueue' );
@@ -35,7 +35,7 @@ function admin_welcome_guide_admin_scripts_and_styles() {
     $script_params = [
         'rest_url' => rest_url(),
     ];
-    wp_localize_script('admin-welcome-guide-plugin-script', 'admin_welcome_guide_script_params', $script_params);
+    wp_localize_script( 'admin-welcome-guide-plugin-script', 'admin_welcome_guide_script_params', $script_params );
     wp_enqueue_style( 'admin-welcome-guide-plugin-style', plugins_url( 'build/admin.css', __FILE__ ), [ 'wp-components' ], filemtime( plugin_dir_path( __FILE__ ) . 'build/admin.css' ) );
 }
 
@@ -108,7 +108,7 @@ function admin_welcome_guide_get_thumbnail_url( $post ) {
     if ( has_post_thumbnail( $post['id'] ) ) {
         $imgArray = wp_get_attachment_image_src( get_post_thumbnail_id( $post['id'] ), 'large' );
         $imgURL   = $imgArray[0];
-        return esc_url ($imgURL );
+        return esc_url( $imgURL );
     } else {
         return false;
     }
@@ -119,9 +119,9 @@ function admin_welcome_guide_insert_thumbnail_url() {
         'guides',
         'featured_image',  // key-name in json response
         [
-            'get_callback'      => 'admin_welcome_guide_get_thumbnail_url',
-            'update_callback'   => null,
-            'schema'            => null
+            'get_callback'    => 'admin_welcome_guide_get_thumbnail_url',
+            'update_callback' => null,
+            'schema'          => null,
         ]
     );
 }
@@ -187,3 +187,26 @@ function admin_welcome_guide_register_settings() {
 }
 
 add_action( 'init', 'admin_welcome_guide_register_settings' );
+
+/**
+ * Disable the Default Welcome Guide Popup when a Featured Guide is selected from the Plugin Options.
+ *
+ * @see: https://wordpress.org/plugins/disable-welcome-messages-and-tips/
+ */
+function admin_welcome_guide_hide_default_welcome_guide() {
+
+    $featured_guide = empty( get_option( 'awg_options' ) ) ? '' : get_option( 'awg_options' )['featured_post_id'];
+
+    if ( $featured_guide && ( get_current_screen()->base == 'post' && ( get_post_type() == 'post' || get_post_type() == 'page' ) ) ) :
+        ?>
+            <script>
+            window.onload = function(){
+                wp.data && wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) &&
+                wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' )
+            };
+            </script>
+        <?php
+    endif;
+}
+
+add_action( 'admin_head', 'admin_welcome_guide_hide_default_welcome_guide' );

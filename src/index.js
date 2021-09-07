@@ -8,16 +8,17 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/
  */
 
-import './style.scss';
 const { PluginDocumentSettingPanel } = wp.editPost;
 
 /**
  * Internal dependencies
  */
+import './style.scss';
 import GuideList from './templates/guide-list';
+import FeaturedGuide from './templates/featured-guide';
 import { pluginOptions } from './data'
 
-const { registerPlugin } = wp.plugins;
+import { registerPlugin } from "@wordpress/plugins";
 
 /** 
  * Determine whether to show a list of guides in the Block Editor sidebar 
@@ -65,6 +66,13 @@ const WelcomeGuidePluginRegisterSidebar = () => (
 )
 
 registerPlugin('welcome-guide-plugin-document-setting-panel', {
-  render: WelcomeGuidePluginRegisterSidebar,
+  render: function(){
+    return (
+      <Fragment>
+      { showGuideList() && <FeaturedGuide/> }
+      <WelcomeGuidePluginRegisterSidebar/>
+      </Fragment>
+    )
+  },
   icon: 'welcome-view-site'
 })
