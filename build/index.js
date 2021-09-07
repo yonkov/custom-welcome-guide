@@ -232,7 +232,7 @@ const getPosts = () => {
   const [data, setData] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     const getData = async () => {
-      const response = await fetch(restUrl + 'wp/v2/guides');
+      const response = await fetch(restUrl + 'wp/v2/guides?filter[orderby]=date&order=asc');
       const json = await response.json();
       setData(json);
     };
@@ -369,6 +369,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _guide__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./guide */ "./src/templates/guide.js");
+/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../data */ "./src/data.js");
 
 
 
@@ -382,20 +383,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const {
   __
 } = wp.i18n;
 
 const WelcomeGuideList = props => {
   const [isOpen, setOpen] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-    onClick: () => setOpen(true)
-  }, __('Welcome Guide: “Teach NSMG Editorial Team How To Code”')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-    onClick: () => setOpen(true)
-  }, __('How to Become Senior Dev')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-    onClick: () => setOpen(true)
-  }, __('How to Go to the Beach while you Work')), isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_guide__WEBPACK_IMPORTED_MODULE_3__["default"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, props, {
-    onFinish: () => setOpen(false)
+  const posts = Object(_data__WEBPACK_IMPORTED_MODULE_4__["getPosts"])();
+  const [postId, setPostId] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])();
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, posts.length > 0 && posts.map((post, index) => post.parent == 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    key: index,
+    onClick: () => {
+      setOpen(true);
+      setPostId(post.id);
+    }
+  }, post.parent == 0 && post.title.rendered)), isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_guide__WEBPACK_IMPORTED_MODULE_3__["default"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, props, {
+    onFinish: () => setOpen(false),
+    parentPostId: postId
   })));
 };
 
@@ -437,6 +442,10 @@ __webpack_require__.r(__webpack_exports__);
 
 const WelcomeGuide = props => {
   const posts = Object(_data__WEBPACK_IMPORTED_MODULE_4__["getPosts"])();
+  const {
+    parentPostId
+  } = props;
+  console.log(parentPostId);
   /**
    * Strip potentially dangerous html tags to secure post output
    * @param {string} content 
@@ -455,10 +464,25 @@ const WelcomeGuide = props => {
 
     return div.innerHTML;
   }
+  /**
+   * Create new array from the guides array to pull the selected guide with all its corresponding sub-guides
+   * @param {array} currentGuide 
+   * @returns new array
+   */
+
+
+  function getcurrentGuide(guides) {
+    var currentGuide = [];
+    guides.forEach(guide => {
+      if (guide.parent == parentPostId || guide.id == parentPostId) {
+        currentGuide.push(guide);
+      }
+    });
+    return currentGuide;
+  }
 
   return posts.length > 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Guide"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, props, {
-    className: "admin-welcome-guide",
-    pages: posts.map(post => ({
+    pages: getcurrentGuide(posts).map(post => ({
       image: post.featured_image ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
         src: post.featured_image
       }) : '',

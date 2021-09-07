@@ -8,28 +8,35 @@
 import { useState, Fragment } from '@wordpress/element';
 import { Button} from '@wordpress/components';
 import WelcomeGuide from './guide';
+import { getPosts } from './../data';
 const { __ } = wp.i18n;
 
 const WelcomeGuideList = (props) => {
     const [isOpen, setOpen] = useState(false);
+    const posts = getPosts();
+    const [postId, setPostId] = useState();
+
 
     return (
         <Fragment>
-            <Button onClick={() => setOpen(true)}>
-                {__('Welcome Guide: “Teach NSMG Editorial Team How To Code”')}
-            </Button>
-            <Button onClick={() => setOpen(true)}>
-                {__('How to Become Senior Dev')}
-            </Button>
-            <Button onClick={() => setOpen(true)}>
-                {__('How to Go to the Beach while you Work')}
-            </Button>
+        { posts.length > 0 &&
+            posts.map ( (post, index) => (
+                post.parent == 0 &&
+                <Button key={index} onClick={() => {
+                    setOpen(true);
+                    setPostId(post.id)
+                } }>          
+                    { post.parent == 0 && post.title.rendered }
+                </Button>
+             ) )
+            }
             {isOpen && (
                 <WelcomeGuide
                     {...props}
                     onFinish={() => setOpen(false)}
+                    parentPostId = {postId}
                 />
-            )}
+            ) }
         </Fragment>
     )
 };

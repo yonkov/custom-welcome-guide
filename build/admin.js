@@ -114,7 +114,7 @@ const getPosts = () => {
   const [data, setData] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     const getData = async () => {
-      const response = await fetch(restUrl + 'wp/v2/guides');
+      const response = await fetch(restUrl + 'wp/v2/guides?filter[orderby]=date&order=asc');
       const json = await response.json();
       setData(json);
     };

@@ -11,7 +11,7 @@ export const getPosts = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch( restUrl + 'wp/v2/guides');
+      const response = await fetch( restUrl + 'wp/v2/guides?filter[orderby]=date&order=asc');
       const json = await response.json();
       setData(json);
     };

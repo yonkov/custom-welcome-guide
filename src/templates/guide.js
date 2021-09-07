@@ -11,14 +11,17 @@
  import { getPosts } from './../data'
 
  const WelcomeGuide = ( props ) => {
-
+  
   const posts = getPosts();
+  const {parentPostId} = props;
+  console.log(parentPostId);
 
   /**
    * Strip potentially dangerous html tags to secure post output
    * @param {string} content 
    * @returns escaped html
    */
+
   function escapeHtml(content) {
     let div = document.createElement('div');
     div.innerHTML = content;
@@ -32,11 +35,27 @@
   
     return div.innerHTML;
   }
-  
+
+  /**
+   * Create new array from the guides array to pull the selected guide with all its corresponding sub-guides
+   * @param {array} currentGuide 
+   * @returns new array
+   */
+   function getcurrentGuide(guides){
+    var currentGuide = [];
+    guides.forEach(guide =>{
+      if (guide.parent == parentPostId || guide.id == parentPostId){
+        currentGuide.push(guide)
+      }
+    });
+
+    return currentGuide;
+  }
+
    return (
     posts.length > 0 && 
       
-      <Guide { ...props } className="admin-welcome-guide" pages={ posts.map((post) => (
+      <Guide { ...props } pages={ getcurrentGuide(posts).map((post) => (
         
         {
           image: post.featured_image ? <img src={post.featured_image} /> : '',
@@ -46,7 +65,7 @@
               <div className="edit-post-welcome-guide__text" dangerouslySetInnerHTML={{ __html: escapeHtml(post.content.rendered) }} />
             </div>
           )
-        }
+        } 
 
       ))
       
