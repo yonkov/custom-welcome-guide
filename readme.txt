@@ -8,7 +8,7 @@ Stable tag:        0.0.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Easily add step-by-step tours/tutorials/walkthrough guides from the WordPress admin. Inspired by the Welcome Guide component for the WordPress block editor.
+Easily add step-by-step tours/tutorials/walkthrough guides from the WordPress admin. Replace the default welcome guide message in the block editor with a custom one.
 
 == Description ==
 Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users or content creators through a friendly user admin interface. Inspired by the [Welcome Guide](https://developer.wordpress.org/block-editor/reference-guides/components/guide/) Gutenberg component that runs when you open the WordPress block editor for the first time. Maybe you are a WordPress agency or a freelancer who needs a simple and user-friendly way to showcase to your clients the cms options that you have built in the WordPress admin? Or you run a multi-authorship platform and you want to make the publishing experience for your fellow authors as easy and smooth as possible? This plugin will empower you to display custom welcome messages and tips to your admin users in a fun, easy and much more interactive way.
@@ -38,8 +38,7 @@ Absolutely! You can create as many guides as you want and link as many screens t
 When you are creating or editing a post, a "Welcome Guide" tab will be visible in the Block Editor's sidebar. Expand the tab and you will see a list with all the guides.
 
 = Can I disable or customize the default Welcome Guide? =
-When an editor opens the Block Editor for the first time, the default Welcome Guide modal pops up. To remove the default welcome message, simply go to the plugin's settings page and select a featured guide from the dropdown list. 
-In this way, you can replace the default welcome tips with a custom welcome message.
+Deffinitely! When an editor opens the Block Editor for the first time, the default Welcome Guide modal pops up. To add a custom welcome message and replace the default one, simply go to the plugin's settings page and select a featured guide from the dropdown list. 
 
 = Can I disable the guides for a specific post type? =
 Sure, you can remove the list with the guides in the Block Editor's sidebar for a specific post type, e.g. pages. Go to the plugin's options page and remove the tick on the toggle button for the respective post type.
