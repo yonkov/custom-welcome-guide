@@ -1,1 +1,19 @@
-.custom-welcome-guide img{max-height:360px;-o-object-fit:cover;object-fit:cover}
+/**
+ * The following styles get applied in the post editor.
+ *
+ */
+.guide-list {
+  display: flex;
+  align-items: center;
+}
+.guide-list button {
+  text-align: left;
+}
+
+.custom-welcome-guide img {
+  max-height: 360px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

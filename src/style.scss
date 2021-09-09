@@ -4,6 +4,15 @@
  */
 
 // guide list styles
+.guide-list {
+    display: flex;
+    align-items: center;
+    button {
+        text-align: left;
+    }
+}
+
+// guide popup styles
 .custom-welcome-guide {
     img {
         max-height: 360px;

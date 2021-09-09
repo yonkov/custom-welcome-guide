@@ -15,13 +15,14 @@ const WelcomeGuideList = (props) => {
     const [isOpen, setOpen] = useState(false);
     const posts = getPosts();
     const [postId, setPostId] = useState();
+    const parentPosts = posts.filter(post =>post.parent==0);
 
     return (
         <Fragment>
         { posts.length > 0 &&
-            posts.filter(post =>post.parent==0).map ((post, index) => (
+            parentPosts.map((post, index) => (
                 <div class="guide-list">
-                {index==0 && posts.length == 1 ? '' : <span>{index+1 + '.'}</span>}
+                {index==0 && parentPosts.length == 1 ? '' : <span>{index+1 + '.'}</span>}
                 <Button className="guide-btn" key={index} onClick={() => {
                     setOpen(true);
                     setPostId(post.id)
