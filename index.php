@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Custom Welcome Guide
  * Description:       Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users through a friendly user admin interface. Inspired by the Welcome Guide component for the Gutenberg editor.
- * Requires at least: 5.4
+ * Requires at least: 5.5
  * Requires PHP:      5.6
  * Version:           1.0.0
  * Author:            Atanas Yonkov, Vlastimir Samolov

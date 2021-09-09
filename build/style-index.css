@@ -1,11 +1,1 @@
-/**
- * The following styles get applied in the post editor.
- *
- */
-.custom-welcome-guide img {
-  max-height: 360px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-/*# sourceMappingURL=style-index.css.map*/
+.custom-welcome-guide img{max-height:360px;-o-object-fit:cover;object-fit:cover}

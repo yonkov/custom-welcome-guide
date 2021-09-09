@@ -16,9 +16,9 @@ import './admin.scss';
 const Notices = () => {
 	const notices = useSelect(
 		( select ) =>
-			select( noticesStore )
-				.getNotices()
-				.filter( ( notice ) => notice.type === 'snackbar' ),
+			select( noticesStore ) ?
+                select( noticesStore ).getNotices()
+				.filter( ( notice ) => notice.type === 'snackbar' ) :
 		[]
 	);
 	const { removeNotice } = useDispatch( noticesStore );
