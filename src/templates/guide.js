@@ -1,6 +1,6 @@
 /**
  * Template for displaying the Welcome Guide
- * @package Admin Welcome Guide
+ * @package Custom Welcome Guide
  * @since 0.0.1
  * @see https://github.com/WordPress/gutenberg/tree/trunk/packages/components/src/guide
  * 
@@ -38,7 +38,7 @@ const WelcomeGuide = (props) => {
   return (
     posts.length > 0 &&
 
-    <Guide {...props} className="admin-welcome-guide"
+    <Guide {...props} className="custom-welcome-guide"
       pages={posts.filter(post => post.parent == parentPostId || post.id == parentPostId).map((post) => (
 
         {

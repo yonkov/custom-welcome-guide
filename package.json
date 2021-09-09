@@ -1,7 +1,7 @@
 {
-	"name": "admin-welcome-guide",
+	"name": "custom-welcome-guide",
 	"version": "0.0.1",
-	"description": "Welcome Guide plugin is built based on Gutenberg components. Written with ESNext standard and JSX support – build step required.",
+	"description": "Custom Welcome Guide is a WordPress plugin, built based on Gutenberg components. Written with ESNext standard and JSX support – build step required. The plugin takse advantages of the React.js framework to manage get and post requests to the WordPress rest api",
 	"author": "Atanas Yonkov, Vlastimir Samolov",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",

@@ -1,10 +1,10 @@
-=== Admin Welcome Guide ===
+=== Custom Welcome Guide ===
 Contributors:      nravota12, VlastimirSamolov
 Tags:              user-onboarding, tour, introduction, walkthrough, block-editor
 Tested up to:      5.8
 Requires at least: 5.4
 Requires PHP:      5.6
-Stable tag:        0.0.1
+Stable tag:        1.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,5 +53,5 @@ No, the plugin takes advantage of the pre-built Gutenberg components from the Wo
 
 == Changelog ==
 
-= 0.0.1 - September 2021 =
+= 1.0.0 - September 2021 =
 * First Release

@@ -1,1 +1,17 @@
-.welcome-guide-admin-notices .components-snackbar{background-color:var(--wp-admin-theme-color-darker-10)}.welcome-guide-admin-notices .dashicons-smiley::before{position:relative;right:7px}.admin-welcome-guide-wrapper .css-ebmrdk-Container{width:auto}
+/**
+ * The following styles get applied in the WordPress admin.
+ *
+ */
+.custom-welcome-guide-admin-notices .components-snackbar {
+  background-color: var(--wp-admin-theme-color-darker-10);
+}
+.custom-welcome-guide-admin-notices .dashicons-smiley::before {
+  position: relative;
+  right: 7px;
+}
+
+.custom-welcome-guide-wrapper .css-ebmrdk-Container {
+  width: auto;
+}
+
+/*# sourceMappingURL=admin.css.map*/

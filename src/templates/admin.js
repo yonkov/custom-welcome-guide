@@ -1,6 +1,6 @@
 /**
  * Template for Displaying the Plugin's Settings page using React Components
- * @package Admin Welcome Guide
+ * @package Custom Welcome Guide
  * @since 0.0.1
  * @see https://wholesomecode.ltd/wordpress/create-settings-page-wordpress-gutenberg-components/
  */
@@ -12,7 +12,6 @@ import api from '@wordpress/api';
 import {dispatch, useDispatch, useSelect } from '@wordpress/data';
 import { store as noticesStore } from '@wordpress/notices';
 import './admin.scss';
-import { getPosts } from './../data'
 
 const Notices = () => {
 	const notices = useSelect(
@@ -26,7 +25,7 @@ const Notices = () => {
 
 	return (
 		<SnackbarList
-			className="welcome-guide-admin-notices"
+			className="custom-welcome-guide-admin-notices"
 			notices={ notices }
 			onRemove={ removeNotice }
 		/>
@@ -55,17 +54,17 @@ class App extends Component {
             if (!isAPILoaded) {
                 this.settings.fetch().then((response) => {
                     this.setState({
-                        isShowPost: response['awg_options']['is_show_post'] ? response['awg_options']['is_show_post'] : '',
-                        isShowPage: response['awg_options']['is_show_page'] ? response['awg_options']['is_show_page'] : '',
-                        isShowCPT: response['awg_options']['is_show_cpt'] ? response['awg_options']['is_show_cpt'] : '',
-                        featuredPostId: response['awg_options'][ 'featured_post_id' ] ? response['awg_options'][ 'featured_post_id' ] : '',
+                        isShowPost: response['cwg_options']['is_show_post'] ? response['cwg_options']['is_show_post'] : '',
+                        isShowPage: response['cwg_options']['is_show_page'] ? response['cwg_options']['is_show_page'] : '',
+                        isShowCPT: response['cwg_options']['is_show_cpt'] ? response['cwg_options']['is_show_cpt'] : '',
+                        featuredPostId: response['cwg_options'][ 'featured_post_id' ] ? response['cwg_options'][ 'featured_post_id' ] : '',
                         isAPILoaded: true
                     });
                 });
             }
         });
         // fetch all posts
-        fetch(admin_welcome_guide_script_params.rest_url + 'wp/v2/guides')
+        fetch(custom_welcome_guide_script_params.rest_url + 'wp/v2/guides')
             .then((response) => response.json())
             .then(posts => {
                 this.setState({posts: posts }); 
@@ -81,14 +80,14 @@ class App extends Component {
     dropdownWithOptions(posts){
         const options = [
             {   
-                label: __( 'None', 'admin-welcome-guide' ),
+                label: __( 'None', 'custom-welcome-guide' ),
                 value: ''
             }
         ];
         posts.forEach(post =>{
             if (post.parent == 0 ){
               options.push({
-                label: __( post.title.rendered, 'admin-welcome-guide' ),
+                label: __( post.title.rendered, 'custom-welcome-guide' ),
                 value: post.id 
               })
             }
@@ -103,7 +102,7 @@ class App extends Component {
         if (!isAPILoaded) {
             return (
                 <Fragment>
-                    <h2><Icon icon="admin-plugins" /> {__('Welcome Guide Options', 'admin-welcome-guide')}</h2>
+                    <h2><Icon icon="admin-plugins" /> {__('Welcome Guide Options', 'custom-welcome-guide')}</h2>
                     <PanelBody>
                         <PanelRow>
                             <Spinner />
@@ -114,11 +113,11 @@ class App extends Component {
         }
         return (
             <Fragment>
-                <h2><Icon icon="admin-plugins" /> {__('Welcome Guide Options', 'admin-welcome-guide')}</h2>
+                <h2><Icon icon="admin-plugins" /> {__('Welcome Guide Options', 'custom-welcome-guide')}</h2>
                 <PanelBody>
                     <PanelRow>
                         <ToggleControl
-                            label={__('Show guides in the Post editor', 'admin-welcome-guide')}
+                            label={__('Show guides in the Post editor', 'custom-welcome-guide')}
                             help={"Show a list of all the admin guides in the post editor's sidebar."}
                             checked={this.state.isShowPost}
                             onChange={this.toggleCheckbox.bind(this, 'isShowPost')}
@@ -126,7 +125,7 @@ class App extends Component {
                     </PanelRow>
                     <PanelRow>
                         <ToggleControl
-                            label={__('Show guides in the Page editor', 'admin-welcome-guide')}
+                            label={__('Show guides in the Page editor', 'custom-welcome-guide')}
                             help={"Display the admin guides in the page editor's sidebar."}
                             checked={this.state.isShowPage}
                             onChange={this.toggleCheckbox.bind(this, 'isShowPage')}
@@ -134,7 +133,7 @@ class App extends Component {
                     </PanelRow>
                     <PanelRow>
                         <ToggleControl
-                            label={__('Show guides in Custom Post Types', 'admin-welcome-guide')}
+                            label={__('Show guides in Custom Post Types', 'custom-welcome-guide')}
                             help={"Enable the welcome guides for custom post types. Note that they need to use the Block editor for this option to work."}
                             checked={this.state.isShowCPT}
                             onChange={this.toggleCheckbox.bind(this, 'isShowCPT')}
@@ -142,8 +141,8 @@ class App extends Component {
                     </PanelRow>
                     <PanelRow>
                         <SelectControl
-                            help={ __( "Choose a Featured Guide if you want to replace the Block Editor's default Welcome Guide Modal that pops up when you open the Block Editor for the first time.", 'admin-welcome-guide' ) }
-                            label={ __( 'Featured Guide', 'admin-welcome-guide' ) }
+                            help={ __( "Choose a Featured Guide if you want to replace the Block Editor's default Welcome Guide Modal that pops up when you open the Block Editor for the first time.", 'custom-welcome-guide' ) }
+                            label={ __( 'Featured Guide', 'custom-welcome-guide' ) }
                             onChange={ ( featuredPostId ) => this.setState( { featuredPostId } ) }
                             options= {
                                  posts && this.dropdownWithOptions(posts)
@@ -156,11 +155,11 @@ class App extends Component {
                 <Button
                     isPrimary
                     onClick={() => {
-                        localStorage.removeItem('admin-welcome-guide');
+                        localStorage.removeItem('custom-welcome-guide');
                         const { isShowPost, isShowPage, isShowCPT } = this.state;
 
                         const settings = new api.models.Settings({
-                            awg_options: {
+                            cwg_options: {
                                 ['is_show_post']: isShowPost ? 'true' : '',
                                 ['is_show_page']: isShowPage ? 'true' : '',
                                 ['is_show_cpt']: isShowCPT ? 'true' : '',
@@ -172,7 +171,7 @@ class App extends Component {
                         dispatch('core/notices')
                             .createNotice(
                                 'success',
-                                 __( 'Settings Saved', 'admin-welcome-guide' ),
+                                 __( 'Settings Saved', 'custom-welcome-guide' ),
                                 {
                                     type: 'snackbar',
                                     isDismissible: true,
@@ -182,7 +181,7 @@ class App extends Component {
                         );
                     }}
                 >
-                    {__('Save', 'admin-welcome-guide')}
+                    {__('Save', 'custom-welcome-guide')}
                 </Button>
                 <Notices />
             </Fragment>
@@ -191,7 +190,7 @@ class App extends Component {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const htmlOutput = document.getElementById('admin-welcome-guide-wrapper');
+    const htmlOutput = document.getElementById('custom-welcome-guide-wrapper');
 
     if (htmlOutput) {
         render(

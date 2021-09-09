@@ -1,4 +1,4 @@
-Admin Welcome Guide is a WordPress plugin, inspired by the [Welcome Guide](https://developer.wordpress.org/block-editor/reference-guides/components/guide/) Gutenberg component that pops up when the user opens the WordPress editor for the first time. The plugin lets you create onboarding user introduction tours to guide content creators throughout the admin area of the website.
+Custom Welcome Guide is a WordPress plugin, inspired by the [Welcome Guide](https://developer.wordpress.org/block-editor/reference-guides/components/guide/) Gutenberg component that pops up when the user opens the WordPress editor for the first time. The plugin lets you create onboarding user introduction tours to guide content creators throughout the admin area of the website.
 
 ### Installation
 Clone or download this repository, unzip it and paste it inside the ```wp-content => plugins``` folder in your WordPress installation. Activate the plugin from the WordPress admin.
@@ -11,7 +11,7 @@ If you are a developer and you want to contribute to this project or fork it, th
 This step is required if you want to enable support for ES6+ and JSX. After you finish your work, run ```npm run build``` to generate the code for production.
 
 ### Technical Information
-This plugin is bootstrapped by running ```npx @wordpress/create-block admin-welcome-guide```. See the [Block Api WordPress documentation](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-create-block/) for more information.
+This plugin is bootstrapped by running ```npx @wordpress/create-block custom-welcome-guide```. See the [Block Api WordPress documentation](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-create-block/) for more information.
 
 ### Useful Links
 

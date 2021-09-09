@@ -1,6 +1,6 @@
 /**
  * Template for displaying a List of Guides in the Gutenberg Post Sidebar
- * @package Admin Welcome Guide
+ * @package Custom Welcome Guide
  * @since 0.0.1
  * @see https://github.com/WordPress/gutenberg/tree/trunk/packages/components/src/guide
  * 
@@ -19,14 +19,16 @@ const WelcomeGuideList = (props) => {
     return (
         <Fragment>
         { posts.length > 0 &&
-            posts.map ( (post, index) => (
-                post.parent == 0 &&
-                <Button key={index} onClick={() => {
+            posts.filter(post =>post.parent==0).map ((post, index) => (
+                <div class="guide-list">
+                {index==0 && posts.length == 1 ? '' : <span>{index+1 + '.'}</span>}
+                <Button className="guide-btn" key={index} onClick={() => {
                     setOpen(true);
                     setPostId(post.id)
                 } }>          
-                    { post.parent == 0 && post.title.rendered }
+                    { post.title.rendered }
                 </Button>
+                </div>
              ) )
             }
             {isOpen && (

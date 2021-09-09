@@ -2,9 +2,11 @@
  * The following styles get applied in the post editor.
  *
  */
-.admin-welcome-guide {
+
+// guide list styles
+.custom-welcome-guide {
     img {
-        max-height: 440px;
+        max-height: 360px;
         object-fit: cover;
     }
 }

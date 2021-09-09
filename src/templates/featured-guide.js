@@ -15,14 +15,14 @@ const FeaturedGuide = (props) => {
         return null
     }
 
-    return ( !localStorage.getItem('admin-welcome-guide') && featuredPostId && 
+    return ( !localStorage.getItem('custom-welcome-guide') && featuredPostId && 
         <>
         {isOpen && (
         <WelcomeGuide
             parentPostId = {featuredPostId}
             onFinish={() => {
                 setOpen(false)
-                localStorage.setItem('admin-welcome-guide', 'yes')
+                localStorage.setItem('custom-welcome-guide', 'yes')
             }
             
             }

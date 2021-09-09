@@ -1,99 +1,106 @@
 <?php
 /**
- * Plugin Name:       Admin Welcome Guide
+ * Plugin Name:       Custom Welcome Guide
  * Description:       Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users through a friendly user admin interface. Inspired by the Welcome Guide component for the Gutenberg editor.
  * Requires at least: 5.4
  * Requires PHP:      5.6
- * Version:           0.0.1
+ * Version:           1.0.0
  * Author:            Atanas Yonkov, Vlastimir Samolov
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       admin-welcome-guide
+ * Text Domain:       custom-welcome-guide
  */
 
+/**
+ * Exit if accessed directly
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'Woof Woof Woof!' );
+}
+
 /* Enqueue scripts and styles for the WordPress Block editor */
-function admin_welcome_guide_editor_script_register() {
+function custom_welcome_guide_editor_script_register() {
     wp_register_script( 'build/index.js', plugins_url( 'build/index.js', __FILE__ ), [ 'wp-api', 'wp-edit-post', 'wp-element' ] );
 }
-add_action( 'init', 'admin_welcome_guide_editor_script_register' );
+add_action( 'init', 'custom_welcome_guide_editor_script_register' );
 
-function admin_welcome_guide_editor_assets_enqueue() {
+function custom_welcome_guide_editor_assets_enqueue() {
     wp_enqueue_script( 'build/index.js' );
-    wp_enqueue_style( 'admin_welcome_guide-editor-css', plugins_url( 'build/style-index.css', __FILE__ ), [], filemtime( plugin_dir_path( __FILE__ ) . 'build/style-index.css' ) );
+    wp_enqueue_style( 'custom-welcome-guide-editor-css', plugins_url( 'build/style-index.css', __FILE__ ), [], filemtime( plugin_dir_path( __FILE__ ) . 'build/style-index.css' ) );
     $script_params = [
         'rest_url' => rest_url(),
     ];
-    wp_localize_script( 'build/index.js', 'admin_welcome_guide_script_params', $script_params );
+    wp_localize_script( 'build/index.js', 'custom_welcome_guide_script_params', $script_params );
 
 }
-add_action( 'enqueue_block_editor_assets', 'admin_welcome_guide_editor_assets_enqueue' );
+add_action( 'enqueue_block_editor_assets', 'custom_welcome_guide_editor_assets_enqueue' );
 
 /* Enqueue scripts and styles for the whole WordPress admin */
-function admin_welcome_guide_admin_scripts_and_styles() {
+function custom_welcome_guide_admin_scripts_and_styles() {
     $script_asset = require plugin_dir_path( __FILE__ ) . 'build/admin.asset.php';
-    wp_enqueue_script( 'admin-welcome-guide-plugin-script', plugins_url( 'build/admin.js', __FILE__ ), $script_asset['dependencies'], $script_asset['version'], true );
+    wp_enqueue_script( 'custom-welcome-guide-plugin-script', plugins_url( 'build/admin.js', __FILE__ ), $script_asset['dependencies'], $script_asset['version'], true );
     $script_params = [
         'rest_url' => rest_url(),
     ];
-    wp_localize_script( 'admin-welcome-guide-plugin-script', 'admin_welcome_guide_script_params', $script_params );
-    wp_enqueue_style( 'admin-welcome-guide-plugin-style', plugins_url( 'build/admin.css', __FILE__ ), [ 'wp-components' ], filemtime( plugin_dir_path( __FILE__ ) . 'build/admin.css' ) );
+    wp_localize_script( 'custom-welcome-guide-plugin-script', 'custom_welcome_guide_script_params', $script_params );
+    wp_enqueue_style( 'custom-welcome-guide-plugin-style', plugins_url( 'build/admin.css', __FILE__ ), [ 'wp-components' ], filemtime( plugin_dir_path( __FILE__ ) . 'build/admin.css' ) );
 }
 
-add_action( 'admin_enqueue_scripts', 'admin_welcome_guide_admin_scripts_and_styles' );
+add_action( 'admin_enqueue_scripts', 'custom_welcome_guide_admin_scripts_and_styles' );
 
 /* Throw a dismissible warning message if the Classic Editor is used for Posts and Pages*/
-function admin_welcome_guide_classic_editor_admin_notice() {
+function custom_welcome_guide_classic_editor_admin_notice() {
 
-    $plugin_link = '<a href="' . esc_url( get_admin_url() ) . 'edit.php?post_type=guides&page=admin_welcome_guide' . '">' . __( 'Welcome Guide', 'admin-welcome-guide' ) . '</a>';
+    $plugin_link = '<a href="' . esc_url( get_admin_url() ) . 'edit.php?post_type=guides&page=custom_welcome_guide' . '">' . __( 'Welcome Guide', 'custom-welcome-guide' ) . '</a>';
 
     /* translators: Plugin name*/
     if ( get_current_screen()->base == 'post' && ( get_post_type() == 'post' || get_post_type() == 'page' ) ) {
         printf(
             '<div class="notice notice-warning is-dismissible"><p>' .
-            esc_html__( 'You need to use the Block Editor to take advantage of the %1$s plugin!', 'admin-welcome-guide' ) .
+            esc_html__( 'You need to use the Block Editor to take advantage of the %1$s plugin!', 'custom-welcome-guide' ) .
             '</p></div>',
             $plugin_link
         );
     }
 }
-add_action( 'admin_notices', 'admin_welcome_guide_classic_editor_admin_notice' );
+add_action( 'admin_notices', 'custom_welcome_guide_classic_editor_admin_notice' );
 
 /* Create Guide Custom post type */
 require_once plugin_dir_path( __FILE__ ) . 'inc/guide.php';
 
 /* Register plugin Settings page under Guides Custom Post Type */
-function admin_welcome_guide_settings_page() {
-    $page_title = __( 'Admin Welcome Guide Options', 'admin-welcome-guide' );
-    $menu_title = __( 'Settings', 'admin-welcome-guide' );
+function custom_welcome_guide_settings_page() {
+    $page_title = __( 'Custom Welcome Guide Options', 'custom-welcome-guide' );
+    $menu_title = __( 'Settings', 'custom-welcome-guide' );
     $capability = 'manage_options';
-    $slug       = 'admin_welcome_guide';
-    $callback   = 'admin_welcome_guide_page_content_callback';
+    $slug       = 'custom_welcome_guide';
+    $callback   = 'custom_welcome_guide_page_content_callback';
     $icon       = 'dashicons-admin-plugins';
     $position   = 100;
 
     add_submenu_page( 'edit.php?post_type=guides', $page_title, $menu_title, $capability, $slug, $callback );
 }
 
-add_action( 'admin_menu', 'admin_welcome_guide_settings_page' );
+add_action( 'admin_menu', 'custom_welcome_guide_settings_page' );
 
 /**
  * Add Settings link in WordPress Plugins Page
  */
-function admin_welcome_guide_settings_link( array $links ) {
-    $url           = get_admin_url() . 'edit.php?post_type=guides&page=admin_welcome_guide';
-    $settings_link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'admin-welcome-guide' ) . '</a>';
+function custom_welcome_guide_settings_link( array $links ) {
+    $url           = get_admin_url() . 'edit.php?post_type=guides&page=custom_welcome_guide';
+    $settings_link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'custom-welcome-guide' ) . '</a>';
     $links[]       = $settings_link;
     return $links;
 }
 
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'admin_welcome_guide_settings_link' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'custom_welcome_guide_settings_link' );
 
 /**
  * Add a page wrapper to the Plugin's settings page and let React.js handle the rest
  */
-function admin_welcome_guide_page_content_callback() {
+function custom_welcome_guide_page_content_callback() {
     ?>
-    <div id="admin-welcome-guide-wrapper" class="admin-welcome-guide-wrapper"></div>
+    <div id="custom-welcome-guide-wrapper" class="custom-welcome-guide-wrapper"></div>
     <?php
 }
 
@@ -104,7 +111,7 @@ function admin_welcome_guide_page_content_callback() {
  */
 
 // Get image URL
-function admin_welcome_guide_get_thumbnail_url( $post ) {
+function custom_welcome_guide_get_thumbnail_url( $post ) {
     if ( has_post_thumbnail( $post['id'] ) ) {
         $imgArray = wp_get_attachment_image_src( get_post_thumbnail_id( $post['id'] ), 'large' );
         $imgURL   = $imgArray[0];
@@ -114,19 +121,19 @@ function admin_welcome_guide_get_thumbnail_url( $post ) {
     }
 }
 
-function admin_welcome_guide_insert_thumbnail_url() {
+function custom_welcome_guide_insert_thumbnail_url() {
     register_rest_field(
         'guides',
         'featured_image',  // key-name in json response
         [
-            'get_callback'    => 'admin_welcome_guide_get_thumbnail_url',
+            'get_callback'    => 'custom_welcome_guide_get_thumbnail_url',
             'update_callback' => null,
             'schema'          => null,
         ]
     );
 }
 
-add_action( 'rest_api_init', 'admin_welcome_guide_insert_thumbnail_url' );
+add_action( 'rest_api_init', 'custom_welcome_guide_insert_thumbnail_url' );
 
 /**
  * Store plugin's settings
@@ -135,7 +142,7 @@ add_action( 'rest_api_init', 'admin_welcome_guide_insert_thumbnail_url' );
  * @since wp 5.3
  * @see https://wordpress.stackexchange.com/questions/360207/serialized-settings-in-rest-api
  */
-function admin_welcome_guide_register_settings() {
+function custom_welcome_guide_register_settings() {
 
     // default settings
     $default_options = [
@@ -144,7 +151,7 @@ function admin_welcome_guide_register_settings() {
         'is_show_cpt'      => '',
         'featured_post_id' => '',
     ];
-    add_option( 'awg_options', $default_options );
+    add_option( 'cwg_options', $default_options );
 
     // plugin options schema prepare for the rest api
     $general_options = [
@@ -179,23 +186,23 @@ function admin_welcome_guide_register_settings() {
 
     // register plugin options as an object
     register_setting(
-        'awg_settings',
-        'awg_options',
+        'cwg_settings',
+        'cwg_options',
         $general_options
     );
 
 }
 
-add_action( 'init', 'admin_welcome_guide_register_settings' );
+add_action( 'init', 'custom_welcome_guide_register_settings' );
 
 /**
  * Disable the Default Welcome Guide Popup when a Featured Guide is selected from the Plugin Options.
  *
  * @see: https://wordpress.org/plugins/disable-welcome-messages-and-tips/
  */
-function admin_welcome_guide_hide_default_welcome_guide() {
+function custom_welcome_guide_hide_default_welcome_guide() {
 
-    $featured_guide = empty( get_option( 'awg_options' ) ) ? '' : get_option( 'awg_options' )['featured_post_id'];
+    $featured_guide = empty( get_option( 'cwg_options' ) ) ? '' : get_option( 'cwg_options' )['featured_post_id'];
 
     if ( $featured_guide && ( get_current_screen()->base == 'post' && ( get_post_type() == 'post' || get_post_type() == 'page' ) ) ) :
         ?>
@@ -209,4 +216,4 @@ function admin_welcome_guide_hide_default_welcome_guide() {
     endif;
 }
 
-add_action( 'admin_head', 'admin_welcome_guide_hide_default_welcome_guide' );
+add_action( 'admin_head', 'custom_welcome_guide_hide_default_welcome_guide' );

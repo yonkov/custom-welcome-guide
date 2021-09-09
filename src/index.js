@@ -4,7 +4,7 @@
  * It adds and additional tab in the WordPress Block Editor's sidebar.
  * The plugin takes advantage of the WordPress rest api, introduced in version 4.7.
  * It uses Gutenberg components from WordPress core to load a list of user-defined guides.
- * @package Admin Welcome Guide
+ * @package Custom Welcome Guide
  * @since 0.0.1
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/
  */
