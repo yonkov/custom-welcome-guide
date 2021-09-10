@@ -26,19 +26,22 @@ You first need to navigate to the Guides tab in the WordPress admin and add a ne
 == Frequently Asked Questions ==
 
 == How to create a guide?
-From your WordPress admin dashboard, navigate to Guides tab and add a new Guide. 
+From your WordPress admin dashboard, navigate to Guides tab and add a new guide by clicking on the "Add New" button.
+
+== How to add an image to the guide?
+When creating or editing a guide, you can optionally assign a featured image to it by going to the featured image tab in the Block Editor's sidebar.
 
 == How to add additional popups to the guide?
-To add more screens (steps / sub-guides) to the guide, you need to create a sub-guide. Create a new guide and link it to the parent guide via the ```Page Attributes``` tab from the right sidebar in the Block Editor.
+To add more screens (steps/sub-guides) to the guide, you need to create a sub-guide and link it to the parent guide. Create a new guide and link it to the parent guide via the ```Page Attributes``` tab from the right sidebar in the Block Editor.
 
 = Can I create more than one guide? =
 Absolutely! You can create as many guides as you want and link as many screens to them as you wish. A list with all the guides will be visible in the ```Welcome Guide``` tab from the block editor's sidebar.
 
 = How to run a guide? =
-When you are creating or editing a post, a "Welcome Guide" tab will be visible in the Block Editor's sidebar, right below the Status & Visibility tab. Expand the tab and you will see a list with all the guides.
+When creating or editing a post, a "Welcome Guide" tab will be visible in the Block Editor's sidebar, right below the Status & Visibility tab. Expand the tab and you will see a list with all the guides. You can also create a featured Guide, that will popup the first time the user opens the Block Editor. Please check the next question for more details.
 
 = Can I disable or customize the default Welcome Guide? =
-Deffinitely! When an editor opens the Block Editor for the first time, the default Welcome Guide modal pops up. To add a custom welcome message and replace the default one, simply go to the plugin's settings page and select a featured guide from the dropdown list. 
+Deffinitely! When an editor opens the Block Editor for the first time, the default Welcome Guide modal pops up. To add a custom welcome message and replace the default one, simply go to the plugin's settings page (Guides => Settings) and select a featured guide from the dropdown list. 
 
 = Can I disable the guides for a specific post type? =
 Sure, you can remove the list with the guides in the Block Editor's sidebar for a specific post type, e.g. pages. Just go to the plugin's settings page and remove the tick on the toggle button for the respective post type.
@@ -47,7 +50,7 @@ Sure, you can remove the list with the guides in the Block Editor's sidebar for 
 No, the scope of the plugin is to help your admin users or editors with the cms options and currently runs only from the WordPress block editor's screen.
 
 = Can I run the guides from the Classic Editor? =
-No, the plugin takes advantage of the pre-built Gutenberg components from the WordPress core. They get loaded only when you are using the Block editor.
+No, the plugin takes advantage of the pre-built Gutenberg components from the WordPress core. They get loaded only when the Block editor is enabled.
 
 == Screenshots ==
 

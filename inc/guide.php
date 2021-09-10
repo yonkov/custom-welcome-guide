@@ -3,7 +3,7 @@
  * Custom Post Type Guides
  *
  * @package Custom Welcome Guide
- * @since 0.0.1
+ * @since 1.0.0
  */
 
 function custom_welcome_guide_register_guides_custom_post_type() {
@@ -26,7 +26,7 @@ function custom_welcome_guide_register_guides_custom_post_type() {
         'label'               => __( 'Guides' ),
         'description'         => __( 'Create Interactive User Guides for your Admin Users' ),
         'labels'              => $labels,
-        'supports'            => [ 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'page-attributes', 'custom-fields' ],
+        'supports'            => [ 'title', 'editor', 'author', 'thumbnail', 'revisions', 'page-attributes', 'custom-fields' ],
         'public'              => false,
         'rewrite'             => false,
         'publicly_queryable'  => false,

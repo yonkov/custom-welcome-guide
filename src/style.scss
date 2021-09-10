@@ -14,8 +14,17 @@
 
 // guide popup styles
 .custom-welcome-guide {
+    .post-thumbnail {
+        display: flex;
+        justify-content: center;
+        background-color: #00a0d2;
+    }
     img {
-        max-height: 360px;
+        width: 220px;
+        height: 220px;
         object-fit: cover;
+    }
+    .components-modal__header .components-button:hover svg {
+        fill: #1e1e1e;
     }
 }

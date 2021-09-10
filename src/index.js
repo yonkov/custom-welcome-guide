@@ -5,7 +5,7 @@
  * The plugin takes advantage of the WordPress rest api, introduced in version 4.7.
  * It uses Gutenberg components from WordPress core to load a list of user-defined guides.
  * @package Custom Welcome Guide
- * @since 0.0.1
+ * @since 1.0.0
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/
  */
 
@@ -48,8 +48,7 @@ function showGuideList() {
 
 /**
  * Register the Welcome Guide plugin in the Block Editor's sidebar
- * @package Admin Tour Guide
- * @since 0.0.1
+ * @since wp 5.4
  * @see https://developer.wordpress.org/block-editor/reference-guides/slotfills/plugin-document-setting-panel/
  */
 

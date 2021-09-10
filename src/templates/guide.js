@@ -1,7 +1,8 @@
 /**
  * Template for displaying the Welcome Guide
  * @package Custom Welcome Guide
- * @since 0.0.1
+ * @since 1.0.0
+ * @since wp 5.5
  * @see https://github.com/WordPress/gutenberg/tree/trunk/packages/components/src/guide
  * 
  */
@@ -38,11 +39,11 @@ const WelcomeGuide = (props) => {
   return (
     posts.length > 0 &&
 
-    <Guide {...props} className="custom-welcome-guide"
+    <Guide {...props} className="edit-post-welcome-guide custom-welcome-guide"
       pages={posts.filter(post => post.parent == parentPostId || post.id == parentPostId).map((post) => (
 
         {
-          image: post.featured_image ? <img src={post.featured_image} /> : '',
+          image: post.featured_image ? <div class="post-thumbnail"><img src={post.featured_image} /></div> : '',
           content: (
             <div>
               <h2 className="edit-post-welcome-guide__heading">{post.title.rendered}</h2>

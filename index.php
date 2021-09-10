@@ -113,7 +113,7 @@ function custom_welcome_guide_page_content_callback() {
 // Get image URL
 function custom_welcome_guide_get_thumbnail_url( $post ) {
     if ( has_post_thumbnail( $post['id'] ) ) {
-        $imgArray = wp_get_attachment_image_src( get_post_thumbnail_id( $post['id'] ), 'large' );
+        $imgArray = wp_get_attachment_image_src( get_post_thumbnail_id( $post['id'] ), 'medium_large' );
         $imgURL   = $imgArray[0];
         return esc_url( $imgURL );
     } else {
@@ -138,7 +138,6 @@ add_action( 'rest_api_init', 'custom_welcome_guide_insert_thumbnail_url' );
 /**
  * Store plugin's settings
  * plugin options object json schema for the rest api support
- *
  * @since wp 5.3
  * @see https://wordpress.stackexchange.com/questions/360207/serialized-settings-in-rest-api
  */

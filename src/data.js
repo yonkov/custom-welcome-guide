@@ -1,7 +1,7 @@
 /**
  * Get all the guides using the WordPress rest api
  * @package Custom Welcome Guide
- * @since 0.0.1
+ * @since 1.0.0
  * @see https://developer.wordpress.org/rest-api/reference/
  */
 import { useEffect, useState } from 'react';

@@ -1,7 +1,7 @@
 /**
  * Template for displaying a List of Guides in the Gutenberg Post Sidebar
  * @package Custom Welcome Guide
- * @since 0.0.1
+ * @since 1.0.0
  * @see https://github.com/WordPress/gutenberg/tree/trunk/packages/components/src/guide
  * 
  */
