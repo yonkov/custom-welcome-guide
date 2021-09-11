@@ -29,6 +29,7 @@ function custom_welcome_guide_editor_assets_enqueue() {
     wp_enqueue_style( 'custom-welcome-guide-editor-css', plugins_url( 'build/style-index.css', __FILE__ ), [], filemtime( plugin_dir_path( __FILE__ ) . 'build/style-index.css' ) );
     $script_params = [
         'rest_url' => rest_url(),
+        'site_url' => get_site_url()
     ];
     wp_localize_script( 'build/index.js', 'custom_welcome_guide_script_params', $script_params );
 

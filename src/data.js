@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import api from '@wordpress/api';
 const restUrl = custom_welcome_guide_script_params.rest_url;
 export const getPosts = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(false);
   useEffect(() => {
     const getData = async () => {
       const response = await fetch( restUrl + 'wp/v2/guides?filter[orderby]=date&order=asc');
