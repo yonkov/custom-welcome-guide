@@ -8,7 +8,7 @@ Stable tag:        1.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Easily add step-by-step tours/tutorials/walkthrough guides from the WordPress admin. Replace the default welcome guide message in the block editor with a custom one.
+Easily add step-by-step tours/tutorials/walkthrough guides from the WordPress admin. Replace the default welcome guide message in the Block editor with a custom one.
 
 == Description ==
 Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users or content creators through a friendly user admin interface. Inspired by the [Welcome Guide](https://developer.wordpress.org/block-editor/reference-guides/components/guide/) Gutenberg component that runs when you open the WordPress block editor for the first time. Maybe you are a WordPress agency or a freelancer who needs a simple and user-friendly way to showcase to your clients the cms options that you have built in the WordPress admin? Or you run a multi-authorship platform and you want to make the publishing experience for your fellow authors as easy and smooth as possible? This plugin will empower you to display custom welcome messages and tips to your admin users in a fun, easy and much more interactive way.
