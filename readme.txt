@@ -11,13 +11,13 @@ License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Easily add step-by-step tours/tutorials/walkthrough guides from the WordPress admin. Replace the default welcome guide message in the Block editor with a custom one.
 
 == Description ==
-Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users or content creators through a friendly user admin interface. Inspired by the [Welcome Guide](https://developer.wordpress.org/block-editor/reference-guides/components/guide/) Gutenberg component that runs when you open the WordPress block editor for the first time. Maybe you are a WordPress agency or a freelancer who needs a simple and user-friendly way to showcase to your clients the cms options that you have built in the WordPress admin? Or you run a multi-authorship platform and you want to make the publishing experience for your fellow authors as easy and smooth as possible? This plugin will empower you to display custom welcome messages and tips to your admin users in a fun, easy and much more interactive way.
+Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users or content creators through a friendly user admin interface. Inspired by the [Welcome Guide](https://developer.wordpress.org/block-editor/reference-guides/components/guide/) Gutenberg component that pops up when you open the Block editor for the first time. Maybe you are a WordPress agency or a freelancer who needs a simple and user-friendly way to showcase to your clients the cms options that you have built in the WordPress admin? Or you work with an editorial team and you want to make the publishing experience as easy and smooth as possible? This plugin will empower you to display custom welcome messages and tips to your admin users in a fun, easy and much more interactive way.
 
 = Plugin Options =
 You can create, edit and delete guides and add as many sub-guides (popups) to them as you wish via the Guides tab in the WordPress admin. You can choose whether to display a list of all the guides inside the post editor, page editor or only on a specific custom post type. If you wish, you can also remove or override the default WordPress Block Editor welcome tips.
 
 = How it Works =
-You first need to navigate to the Guides tab in the WordPress admin and add a new Guide. You can then assign sub-guides (steps) to the guide you have just created. Just add a new guide and link it to the parent guide via the ```Page Attributes``` tab from the bottom right corner in the Block Editor's sidebar. In this way, the latter guide will become a sub-guide to the first guide (parent guide) that you have created. Now, when you create (or edit) a post or a page in the WordPress admin, you will see a new "Welcome Guide" tab in the Block Editor's sidebar, right under the Status & Visibility tab. Once you expand it, you will see a list with all the parent guides that you have created. When you click on a parent guide, you will see a tour with all the sub-guides that you have associated to the parent guide via the Page Attributes tab.
+Navigate to the Guides tab in the WordPress admin and add a new Guide. You can then assign sub-guides (steps) to the guide you have just created. Just add a new guide and link it to the parent guide via the Page Attributes tab from the bottom right corner in the Block Editor's sidebar. In this way, the latter guide will become a sub-guide to the first guide (parent guide) that you have created. Now, when you create (or edit) a post or a page in the WordPress admin, you will see a new "Welcome Guide" tab in the Block Editor's sidebar, right under the Status & Visibility tab. Once you expand it, you will see a list with all the parent guides that you have created. When you click on a parent guide, you will see a tour with all the sub-guides that you have associated to the parent guide via the Page Attributes tab.
 
 == Installation ==
 1. Upload the plugin files to the `/wp-content/plugins/admin-user-guide` directory, or install the plugin through the WordPress plugins screen directly.
@@ -54,9 +54,10 @@ No, the plugin takes advantage of the pre-built Gutenberg components from the Wo
 
 == Screenshots ==
 
-1. List of Guides in the Block Editor's Sidebar
-2. Plugin's Settings Page
-3. Custom Welcome Guide Popup
+1. Plugin's Settings Page
+2. List of all the Guides in the Block Editor's Sidebar
+3. Adding a sub-guide (popup) to a guide
+4. Custom Welcome Guide Popup
 
 == Changelog ==
 
