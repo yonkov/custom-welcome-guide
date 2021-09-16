@@ -4,7 +4,7 @@
  * Description:       Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users through a friendly user admin interface. Inspired by the Welcome Guide component for the Block editor.
  * Requires at least: 5.5
  * Requires PHP:      5.6
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            NSMG Contributors
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@
  * Exit if accessed directly
  */
 if ( ! defined( 'ABSPATH' ) ) {
-	exit( 'Woof Woof Woof!' );
+    exit( 'Woof Woof Woof!' );
 }
 
 /* Enqueue scripts and styles for the WordPress Block editor */
@@ -28,8 +28,8 @@ function custom_welcome_guide_editor_assets_enqueue() {
     wp_enqueue_script( 'build/index.js' );
     wp_enqueue_style( 'custom-welcome-guide-editor-css', plugins_url( 'build/style-index.css', __FILE__ ), [], filemtime( plugin_dir_path( __FILE__ ) . 'build/style-index.css' ) );
     $script_params = [
-        'rest_url' => rest_url(),
-        'site_url' => get_site_url()
+        'rest_url' => esc_url( get_rest_url() ),
+        'site_url' => esc_url( get_site_url() ),
     ];
     wp_localize_script( 'build/index.js', 'custom_welcome_guide_script_params', $script_params );
 
@@ -41,7 +41,7 @@ function custom_welcome_guide_admin_scripts_and_styles() {
     $script_asset = require plugin_dir_path( __FILE__ ) . 'build/admin.asset.php';
     wp_enqueue_script( 'custom-welcome-guide-plugin-script', plugins_url( 'build/admin.js', __FILE__ ), $script_asset['dependencies'], $script_asset['version'], true );
     $script_params = [
-        'rest_url' => rest_url(),
+        'rest_url' => esc_url( get_rest_url() ),
     ];
     wp_localize_script( 'custom-welcome-guide-plugin-script', 'custom_welcome_guide_script_params', $script_params );
     wp_enqueue_style( 'custom-welcome-guide-plugin-style', plugins_url( 'build/admin.css', __FILE__ ), [ 'wp-components' ], filemtime( plugin_dir_path( __FILE__ ) . 'build/admin.css' ) );
@@ -139,6 +139,7 @@ add_action( 'rest_api_init', 'custom_welcome_guide_insert_thumbnail_url' );
 /**
  * Store plugin's settings
  * plugin options object json schema for the rest api support
+ *
  * @since wp 5.3
  * @see https://wordpress.stackexchange.com/questions/360207/serialized-settings-in-rest-api
  */
@@ -149,6 +150,7 @@ function custom_welcome_guide_register_settings() {
         'is_show_post'     => 'true',
         'is_show_page'     => 'true',
         'is_show_cpt'      => '',
+        'is_show_admin'    => '',
         'featured_post_id' => '',
     ];
     add_option( 'cwg_options', $default_options );
@@ -170,6 +172,11 @@ function custom_welcome_guide_register_settings() {
                         'sanitize_callback' => 'sanitize_text_field',
                     ],
                     'is_show_cpt'      => [
+                        'type'              => 'string',
+                        'default'           => '',
+                        'sanitize_callback' => 'sanitize_text_field',
+                    ],
+                    'is_show_admin'    => [
                         'type'              => 'string',
                         'default'           => '',
                         'sanitize_callback' => 'sanitize_text_field',

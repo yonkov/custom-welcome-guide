@@ -4,14 +4,14 @@ Tags:              user-onboarding, tour, introduction, walkthrough, block-edito
 Tested up to:      5.8
 Requires at least: 5.5
 Requires PHP:      5.6
-Stable tag:        1.0.0
+Stable tag:        1.0.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
 Easily add step-by-step tours/tutorials/walkthrough guides from the WordPress admin. Replace the default welcome guide message in the Block editor with a custom one.
 
 == Description ==
-Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users or content creators through a friendly user admin interface. Inspired by the [Welcome Guide](https://developer.wordpress.org/block-editor/reference-guides/components/guide/) Gutenberg component that pops up when you open the Block editor for the first time. Customize the default welcome message or add as many custom guides as you want. Maybe you are a WordPress agency or a freelancer who needs a simple and user-friendly way to showcase to your clients the cms options that you have built in the WordPress admin? Or you work with an editorial team and you want to make the publishing experience as easy and smooth as possible? This plugin will empower you to display custom welcome messages and tips to your admin users in a fun, easy and much more interactive way.
+Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users or content creators through a friendly user admin interface. Inspired by the [Guide](https://developer.wordpress.org/block-editor/reference-guides/components/guide/) Gutenberg component that pops up when you open the Block editor for the first time. Customize the default welcome message or add as many custom guides as you want. Maybe you are a WordPress agency or a freelancer who needs a simple and user-friendly way to showcase to your clients the cms options that you have built in the WordPress admin? Or you work with an editorial team and you want to make the publishing experience as easy and smooth as possible? This plugin will empower you to display custom welcome messages and tips to your admin users in a fun, easy and much more interactive way.
 
 = Plugin Options =
 You can create, edit and delete guides and add as many sub-guides (popups) to them as you wish via the Guides tab in the WordPress admin. You can choose whether to display a list of all the guides inside the post editor, page editor or only on a specific custom post type. If you wish, you can also remove or override the default WordPress Block Editor welcome tips.
@@ -46,8 +46,11 @@ Deffinitely! When an editor opens the Block Editor for the first time, the defau
 = Can I disable the guides for a specific post type? =
 Sure, you can remove the list with the guides in the Block Editor's sidebar for a specific post type, e.g. pages. Just go to the plugin's settings page and remove the tick on the toggle button for the respective post type.
 
+= Can I show a guide that pops up in all the admin pages? =
+Since version 1.0.1 you can! In the plugin's settings page, select a featured guide and enable the option "show the featured guide in The whole WordPress Admin".
+
 = Can I run the guides from the frontend? =
-No, the scope of the plugin is to help your admin users or editors with the cms options and currently runs only from the WordPress block editor's screen.
+No, the scope of the plugin is to help your admin users or editors with the cms options and currently runs only from the WordPress admin.
 
 = Can I run the guides from the Classic Editor? =
 No, the plugin takes advantage of the pre-built Gutenberg components from the WordPress core. They get loaded only when the Block editor is enabled.
@@ -60,6 +63,9 @@ No, the plugin takes advantage of the pre-built Gutenberg components from the Wo
 4. Custom Welcome Guide Popup
 
 == Changelog ==
+
+= 1.0.1 - September 2021 =
+Add option to show the featured guide in the whole WordPress Admin
 
 = 1.0.0 - September 2021 =
 * First Release

@@ -11,20 +11,3 @@
         text-align: left;
     }
 }
-
-// guide popup styles
-.custom-welcome-guide {
-    .post-thumbnail {
-        display: flex;
-        justify-content: center;
-        background-color: #00a0d2;
-    }
-    img {
-        width: 220px;
-        height: 220px;
-        object-fit: cover;
-    }
-    .components-modal__header .components-button:hover svg {
-        fill: #1e1e1e;
-    }
-}

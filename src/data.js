@@ -33,6 +33,7 @@ export const pluginOptions = () => {
             isShowPost: response['cwg_options']['is_show_post'] ? response['cwg_options']['is_show_post'] : '',
             isShowPage: response['cwg_options']['is_show_page'] ? response['cwg_options']['is_show_page'] : '',
             isShowCPT: response['cwg_options']['is_show_cpt'] ? response['cwg_options']['is_show_cpt'] : '',
+            isShowAdmin: response['cwg_options']['is_show_admin'] ? response['cwg_options']['is_show_admin'] : '',
             featuredPostId: response['cwg_options'][ 'featured_post_id' ] ? response['cwg_options'][ 'featured_post_id' ] : '',
             isAPILoaded: true,
           })
