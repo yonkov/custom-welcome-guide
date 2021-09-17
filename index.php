@@ -5,7 +5,8 @@
  * Requires at least: 5.5
  * Requires PHP:      5.6
  * Version:           1.0.1
- * Author:            NSMG Contributors
+ * Author:            Atanas Yonkov, Vlastimir Samolov
+ * Author URI:        https://github.com/yonkov/custom-welcome-guide
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       custom-welcome-guide

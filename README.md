@@ -1,4 +1,4 @@
-Custom Welcome Guide is a WordPress plugin, inspired by the [Welcome Guide](https://developer.wordpress.org/block-editor/reference-guides/components/guide/) Gutenberg component that pops up when the user opens the WordPress editor for the first time. The plugin lets you create onboarding user introduction tours to guide content creators throughout the admin area of the website.
+Custom Welcome Guide is a WordPress plugin, inspired by the [Guide](https://developer.wordpress.org/block-editor/reference-guides/components/guide/) Gutenberg component that pops up when the user opens the WordPress editor for the first time. The plugin lets you create onboarding user introduction tours to guide content creators throughout the admin area of the website.
 
 ### Installation
 Clone or download this repository, unzip it and paste it inside the ```wp-content => plugins``` folder in your WordPress installation. Activate the plugin from the WordPress admin.
