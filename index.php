@@ -53,13 +53,13 @@ add_action( 'admin_enqueue_scripts', 'custom_welcome_guide_admin_scripts_and_sty
 /* Throw a dismissible warning message if the Classic Editor is used for Posts and Pages*/
 function custom_welcome_guide_classic_editor_admin_notice() {
 
-    $plugin_link = '<a href="' . esc_url( get_admin_url() ) . 'edit.php?post_type=guides&page=custom_welcome_guide' . '">' . __( 'Welcome Guide', 'custom-welcome-guide' ) . '</a>';
+    $plugin_link = '<a href="' . esc_url( get_admin_url() ) . 'edit.php?post_type=guides&page=custom_welcome_guide' . '">' . __( 'Custom Welcome Guide', 'custom-welcome-guide' ) . '</a>';
 
     /* translators: Plugin name*/
     if ( get_current_screen()->base == 'post' && ( get_post_type() == 'post' || get_post_type() == 'page' ) ) {
         printf(
             '<div class="notice notice-warning is-dismissible"><p>' .
-            esc_html__( 'You need to use the Block Editor to take advantage of the %1$s plugin!', 'custom-welcome-guide' ) .
+            esc_html__( 'You should use the Block Editor to take advantage of all the options provided by the %1$s plugin!', 'custom-welcome-guide' ) .
             '</p></div>',
             $plugin_link
         );

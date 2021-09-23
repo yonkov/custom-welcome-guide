@@ -52,8 +52,8 @@ Since version 1.0.1 you can! In the plugin's settings page, select a featured gu
 = Can I run the guides from the frontend? =
 No, the scope of the plugin is to help your admin users or editors with the cms options and currently runs only from the WordPress admin.
 
-= Can I run the guides from the Classic Editor? =
-No, the plugin takes advantage of the pre-built Gutenberg components from the WordPress core. They get loaded only when the Block editor is enabled.
+= Does the plugin work with the Classic Editor? =
+The featured guide should work as expected, however you will not be able to see a list of guides in the post editor's sidebar. The plugin uses the rest api and pre-built Gutenberg components from WordPress core. To take full advantage of all the plugin options, please use the Block editor.
 
 == Screenshots ==
 
