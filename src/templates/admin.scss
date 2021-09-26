@@ -61,6 +61,39 @@
     padding: 0 32px;
 }
 
+//deprecated guide styles
+.custom-deprecated-guide {
+    .edit-post-welcome-guide__page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .edit-post-welcome-guide__image {
+        object-fit: cover;
+    }
+    
+    .edit-post-welcome-guide__image {
+        background: #66c6e4;
+    }
+    
+    @media(min-width:600px){
+        .edit-post-welcome-guide__page {
+            min-height: 300px;
+            padding-left: 344px;
+        }
+        .edit-post-welcome-guide__image {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            height: 300px;
+            width: 320px;
+            margin-top: -150px;
+        }
+    }
+}
+
 @media (min-width: 600px) {
     .custom-welcome-guide {
         width: 312px;

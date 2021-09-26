@@ -2,7 +2,7 @@
 Contributors:      nravota12, VlastimirSamolov
 Tags:              user-onboarding, tour, introduction, walkthrough, block-editor
 Tested up to:      5.8
-Requires at least: 5.5
+Requires at least: 5.4
 Requires PHP:      5.6
 Stable tag:        1.0.1
 License:           GPL-2.0-or-later
@@ -63,6 +63,9 @@ The featured guide should work as expected, however you will not be able to see 
 4. Custom Welcome Guide Popup
 
 == Changelog ==
+
+= 1.0.2 - September 2021 =
+Provide support for wp 5.4
 
 = 1.0.1 - September 2021 =
 Add option to show the featured guide in the whole WordPress Admin

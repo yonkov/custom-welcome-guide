@@ -43,7 +43,7 @@ const WelcomeGuide = (props) => {
       pages={posts.filter(post => post.parent == parentPostId || post.id == parentPostId).map((post) => (
 
         {
-          image: post.featured_image ? <div class="post-thumbnail"><img src={post.featured_image} /></div> : '',
+          image: post.featured_image ? <div className="post-thumbnail"><img src={post.featured_image} /></div> : '',
           content: (
             <div>
               <h2 className="edit-post-welcome-guide__heading">{post.title.rendered}</h2>

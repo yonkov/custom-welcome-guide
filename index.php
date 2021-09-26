@@ -2,9 +2,9 @@
 /**
  * Plugin Name:       Custom Welcome Guide
  * Description:       Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users through a friendly user admin interface. Inspired by the Welcome Guide component for the Block editor.
- * Requires at least: 5.5
+ * Requires at least: 5.4
  * Requires PHP:      5.6
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Atanas Yonkov, Vlastimir Samolov
  * Author URI:        https://github.com/yonkov/custom-welcome-guide
  * License:           GPL-2.0-or-later
@@ -33,7 +33,6 @@ function custom_welcome_guide_editor_assets_enqueue() {
         'site_url' => esc_url( get_site_url() ),
     ];
     wp_localize_script( 'build/index.js', 'custom_welcome_guide_script_params', $script_params );
-
 }
 add_action( 'enqueue_block_editor_assets', 'custom_welcome_guide_editor_assets_enqueue' );
 
@@ -43,6 +42,7 @@ function custom_welcome_guide_admin_scripts_and_styles() {
     wp_enqueue_script( 'custom-welcome-guide-plugin-script', plugins_url( 'build/admin.js', __FILE__ ), $script_asset['dependencies'], $script_asset['version'], true );
     $script_params = [
         'rest_url' => esc_url( get_rest_url() ),
+        'show_deprecated_guide' => version_compare(  $GLOBALS['wp_version'], '5.5', '<' ) ? true : false
     ];
     wp_localize_script( 'custom-welcome-guide-plugin-script', 'custom_welcome_guide_script_params', $script_params );
     wp_enqueue_style( 'custom-welcome-guide-plugin-style', plugins_url( 'build/admin.css', __FILE__ ), [ 'wp-components' ], filemtime( plugin_dir_path( __FILE__ ) . 'build/admin.css' ) );
