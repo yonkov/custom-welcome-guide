@@ -24,7 +24,6 @@ const WelcomeGuideList = (props) => {
 
     const parentPosts = posts.filter(post => post.parent == 0);
 
-
     // loaded state
     return (
         <Fragment>

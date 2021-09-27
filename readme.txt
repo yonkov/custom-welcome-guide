@@ -4,7 +4,7 @@ Tags:              user-onboarding, tour, introduction, walkthrough, block-edito
 Tested up to:      5.8
 Requires at least: 5.4
 Requires PHP:      5.6
-Stable tag:        1.0.1
+Stable tag:        1.0.2
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 

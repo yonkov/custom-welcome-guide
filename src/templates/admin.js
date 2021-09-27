@@ -9,46 +9,51 @@ import { Fragment, render, Component } from '@wordpress/element';
 import { Icon, Button, PanelBody, PanelRow, ToggleControl, SnackbarList, Spinner, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import api from '@wordpress/api';
-import { dispatch, useDispatch, useSelect } from '@wordpress/data';
+import { dispatch, withSelect, withDispatch } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
 import { store as noticesStore } from '@wordpress/notices';
 import { pluginOptions } from './../data'
 import FeaturedGuide from './featured-guide';
 import './admin.scss';
 
-const Notices = () => {
-    const notices = useSelect(
-        (select) =>
-            select(noticesStore) ?
-                select(noticesStore).getNotices()
-                    .filter((notice) => notice.type === 'snackbar') :
-                []
-    );
-    const { removeNotice } = useDispatch(noticesStore);
+const Notices = ({ notices, removeNotice }) => {
 
+    const snackbarNotices = notices ? notices.filter((notice) => notice.type === 'snackbar') : [];
     return (
-        <SnackbarList
-            className="custom-welcome-guide-admin-notices"
-            notices={notices}
-            onRemove={removeNotice}
-        />
+        <>
+            <SnackbarList
+                className="custom-welcome-guide-admin-notices"
+                notices={snackbarNotices}
+                onRemove={removeNotice}
+            />
+        </>
     );
-};
+}
+
+const AppNotices = compose(
+    withSelect((select) => ({
+        notices: select('core/notices').getNotices(),
+    })),
+    withDispatch((dispatch) => ({
+        removeNotice: dispatch('core/notices').removeNotice,
+    })),
+)(Notices);
 
 /** 
 * Determine whether to show the featured guide in the whole WordPress Admin
 * Based on plugin options 
 * @since 1.0.1
 */
-const FeaturedGuideinWholeAdmin = () =>  {
+const FeaturedGuideinWholeAdmin = () => {
     const isBlockEditor = document.body.className.indexOf('block-editor-page') > -1;
 
-    if(isBlockEditor) return null
+    if (isBlockEditor) return null
 
     const { isShowAdmin } = pluginOptions();
 
     if (isShowAdmin) {
         return (
-            <FeaturedGuide/>
+            <FeaturedGuide />
         )
     }
     else {
@@ -218,7 +223,7 @@ class App extends Component {
                 >
                     {__('Save', 'custom-welcome-guide')}
                 </Button>
-                <Notices />
+                <AppNotices />
             </Fragment>
         )
     }
@@ -241,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body.appendChild(popup);
     if (body) {
         render(
-            <FeaturedGuideinWholeAdmin/>,
+            <FeaturedGuideinWholeAdmin />,
             body
         );
     }
