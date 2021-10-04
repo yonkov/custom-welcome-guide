@@ -4,7 +4,7 @@
  * Description:       Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users through a friendly user admin interface. Inspired by the Welcome Guide component for the Block editor.
  * Requires at least: 5.4
  * Requires PHP:      5.6
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            Atanas Yonkov, Vlastimir Samolov
  * Author URI:        https://github.com/yonkov/custom-welcome-guide
  * License:           GPL-2.0-or-later
@@ -30,7 +30,7 @@ function custom_welcome_guide_editor_assets_enqueue() {
     wp_enqueue_style( 'custom-welcome-guide-editor-css', plugins_url( 'build/style-index.css', __FILE__ ), [], filemtime( plugin_dir_path( __FILE__ ) . 'build/style-index.css' ) );
     $script_params = [
         'rest_url' => esc_url( get_rest_url() ),
-        'site_url' => esc_url( get_site_url() ),
+        'site_url' => esc_url( get_site_url() )
     ];
     wp_localize_script( 'build/index.js', 'custom_welcome_guide_script_params', $script_params );
 }
@@ -42,6 +42,7 @@ function custom_welcome_guide_admin_scripts_and_styles() {
     wp_enqueue_script( 'custom-welcome-guide-plugin-script', plugins_url( 'build/admin.js', __FILE__ ), $script_asset['dependencies'], $script_asset['version'], true );
     $script_params = [
         'rest_url' => esc_url( get_rest_url() ),
+        'guide_settings' => custom_welcome_guide_get_plugin_settings(),
         'show_deprecated_guide' => version_compare(  $GLOBALS['wp_version'], '5.5', '<' ) ? true : false
     ];
     wp_localize_script( 'custom-welcome-guide-plugin-script', 'custom_welcome_guide_script_params', $script_params );
@@ -204,6 +205,17 @@ function custom_welcome_guide_register_settings() {
 add_action( 'init', 'custom_welcome_guide_register_settings' );
 
 /**
+ * Get Plugin Options
+ * Escape db output
+ */
+function custom_welcome_guide_get_plugin_settings() {
+	$guide_settings = get_option( 'cwg_options' );
+	if ( ! empty( $guide_settings ) ) {
+		return array_map( 'esc_attr', $guide_settings );
+	}
+}
+
+/**
  * Disable the Default Welcome Guide Popup when a Featured Guide is selected from the Plugin Options.
  *
  * @see: https://wordpress.org/plugins/disable-welcome-messages-and-tips/
@@ -212,7 +224,7 @@ function custom_welcome_guide_hide_default_welcome_guide() {
 
     $featured_guide = empty( get_option( 'cwg_options' ) ) ? '' : get_option( 'cwg_options' )['featured_post_id'];
 
-    if ( $featured_guide && ( get_current_screen()->base == 'post' && ( get_post_type() == 'post' || get_post_type() == 'page' ) ) ) :
+    if ( $featured_guide && get_current_screen()->base == 'post' ) :
         ?>
             <script>
             window.onload = function(){

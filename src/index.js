@@ -30,15 +30,15 @@
    const isPostEditor = document.body.className.indexOf('post-type-post') > -1;
    const isPаgeEditor = document.body.className.indexOf('post-type-page') > -1;
    const isCPTEditor = !isPostEditor && !isPаgeEditor;
-   const { isShowPost, isShowPage, isShowCPT, isAPILoaded} = pluginOptions();
+   const { is_show_post, is_show_page, is_show_cpt } = custom_welcome_guide_script_params.guide_settings;
    
-   if (isPostEditor && isShowPost) {
+   if (isPostEditor && is_show_post) {
      return true
    }
-   else if (isPаgeEditor && isShowPage) {
+   else if (isPаgeEditor && is_show_page) {
      return true
    }
-   else if (isCPTEditor && isShowCPT) {
+   else if (isCPTEditor && is_show_cpt) {
      return true
    }
    else {

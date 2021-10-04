@@ -49,7 +49,7 @@ const FeaturedGuideinWholeAdmin = () => {
 
     if (isBlockEditor) return null
 
-    const { isShowAdmin } = pluginOptions();
+    const isShowAdmin = custom_welcome_guide_script_params.guide_settings.is_show_admin;
 
     if (isShowAdmin) {
         return (

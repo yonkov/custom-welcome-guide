@@ -11,11 +11,8 @@ import DeprecatedGuide from './guide-deprecated';
 const FeaturedGuide = (props) => {
     const show_deprecated_guide = custom_welcome_guide_script_params.show_deprecated_guide;
     const [isOpen, setOpen] = useState(true);
-    const {isAPILoaded, featuredPostId} = pluginOptions();
 
-    if (!isAPILoaded) {
-        return null
-    }
+    const featuredPostId = custom_welcome_guide_script_params.guide_settings.featured_post_id;
 
     return ( !localStorage.getItem('custom-welcome-guide') && featuredPostId && 
         <>
