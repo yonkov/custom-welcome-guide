@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Custom Welcome Guide
- * Description:       Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users through a friendly user admin interface. Inspired by the Welcome Guide component for the Block editor.
+ * Description:       Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users or content creators through a friendly user admin interface. Customize the Welcome Guide component for the Block editor.
  * Requires at least: 5.4
  * Requires PHP:      5.6
  * Version:           1.0.3
