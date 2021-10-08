@@ -40,8 +40,8 @@ Absolutely! You can create as many guides as you want and link as many screens t
 = How to run a guide? =
 When creating or editing a post, a "Welcome Guide" tab will be visible in the Block Editor's sidebar, right below the Status & Visibility tab. Expand the tab and you will see a list with all the guides. You can also create a featured Guide, that will popup the first time the user opens the Block Editor. Please check the next question for more details.
 
-= Can I disable or customize the default Welcome Guide message? =
-Deffinitely! When an editor opens the Block Editor for the first time, the default Welcome Guide dialog pops up. To add a custom welcome guide popup and replace the default one, simply go to the plugin's settings page (Guides => Settings) and select a featured guide from the dropdown list. 
+= Can I customize the default Welcome Guide modal? =
+Deffinitely! When an editor opens the Block Editor for the first time, the default Welcome Guide dialog pops up. To add a custom welcome guide message and replace the default one, simply go to the plugin's settings page (Guides => Settings) and select a featured guide from the dropdown list. 
 
 = Can I disable the guides for a specific post type? =
 Sure, you can remove the list with the guides in the Block Editor's sidebar for a specific post type, e.g. pages. Just go to the plugin's settings page and remove the tick on the toggle button for the respective post type.
