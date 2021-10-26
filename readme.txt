@@ -16,6 +16,8 @@ Create interactive step-by-step introduction tours/tutorials/walkthrough guides 
 = Plugin Options =
 You can create, edit and delete guides and add as many sub-guides (popups) to them as you wish via the Guides tab in the WordPress admin. You can choose whether to display a list of all the guides inside the post editor, page editor or only on a specific custom post type. If you wish, you can also remove or override the default WordPress Block Editor welcome tips.
 
+[youtube https://www.youtube.com/watch?v=IfIbsKaFeH0]
+
 = How it Works =
 Navigate to the Guides tab in the WordPress admin and add a new Guide. You can then assign sub-guides (steps) to the guide you have just created. Just add a new guide and link it to the parent guide via the Page Attributes tab from the bottom right corner in the Block Editor's sidebar. In this way, the latter guide will become a sub-guide to the first guide (parent guide) that you have created. Now, when you create (or edit) a post or a page in the WordPress admin, you will see a new "Welcome Guide" tab in the Block Editor's sidebar, right under the Status & Visibility tab. Once you expand it, you will see a list with all the parent guides that you have created. When you click on a parent guide, you will see a tour with all the sub-guides that you have associated to the parent guide via the Page Attributes tab.
 
