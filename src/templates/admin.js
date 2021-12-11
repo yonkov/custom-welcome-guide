@@ -12,7 +12,6 @@ import api from '@wordpress/api';
 import { dispatch, withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import { store as noticesStore } from '@wordpress/notices';
-import { pluginOptions } from './../data'
 import FeaturedGuide from './featured-guide';
 import './admin.scss';
 
@@ -183,12 +182,13 @@ class App extends Component {
                         />
                     </PanelRow>
                     <PanelRow>
+                        {featuredPostId && 
                         <ToggleControl
                             label={__('Show the featured guide in the whole WordPress Admin', 'custom-welcome-guide')}
                             help={__("By default the featured guide pops up in the Block Editor only. Enable this option to load the featured guide on all admin pages.", 'custom-welcome-guide')}
                             checked={this.state.isShowAdmin}
                             onChange={this.toggleCheckbox.bind(this, 'isShowAdmin')}
-                        />
+                        />}
                     </PanelRow>
                 </PanelBody>
                 <Button

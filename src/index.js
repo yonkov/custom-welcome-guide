@@ -9,7 +9,7 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/components/
  */
 
- const { PluginDocumentSettingPanel } = wp.editPost;
+ import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
 
  /**
   * Internal dependencies
@@ -17,7 +17,6 @@
  import './style.scss';
  import GuideList from './templates/guide-list';
  import FeaturedGuide from './templates/featured-guide';
- import { pluginOptions } from './data'
  
  import { registerPlugin } from "@wordpress/plugins";
  
