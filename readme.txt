@@ -1,7 +1,7 @@
 === Custom Welcome Guide ===
 Contributors:      nravota12, VlastimirSamolov
 Tags:              user-onboarding, tour, introduction, walkthrough, block-editor
-Tested up to:      5.8
+Tested up to:      5.9
 Requires at least: 5.4
 Requires PHP:      5.6
 Stable tag:        1.0.4
