@@ -4,7 +4,7 @@ Tags:              user-onboarding, tour, introduction, walkthrough, block-edito
 Tested up to:      5.9
 Requires at least: 5.4
 Requires PHP:      5.6
-Stable tag:        1.0.4
+Stable tag:        1.0.6
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,12 @@ The featured guide should work as expected, however you will not be able to see 
 4. Custom Welcome Guide Popup
 
 == Changelog ==
+
+= 1.0.6 - March 2022 =
+Improve UI and change editor's panel initial state to open 
+
+= 1.0.5 - February 2022 =
+Add Freemius SDK
 
 = 1.0.4 - December 2021 =
 Add dependencies dynamically via the build folder

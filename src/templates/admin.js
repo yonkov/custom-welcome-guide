@@ -129,6 +129,7 @@ class App extends Component {
 
     render() {
         const { isAPILoaded, posts, featuredPostId } = this.state;
+        const siteUrl = custom_welcome_guide_script_params.site_url;
         if (!isAPILoaded) {
             return (
                 <Fragment>
@@ -144,6 +145,9 @@ class App extends Component {
         return (
             <Fragment>
                 <h2><Icon icon="admin-plugins" /> {__('Welcome Guide Options', 'custom-welcome-guide')}</h2>
+                <p>{__('The settings for the Custom Welcome Guide plugin.', 'custom-welcome-guide')}</p>
+                {posts.length == 0 && <><p>You haven't created any guides yet. Get started by <a href={`${siteUrl + "/wp-admin/edit.php?post_type=guides"}`}>{`${__('adding a guide.', 'custom-welcome-guide')}`}</a></p></>
+                }
                 <PanelBody>
                     <PanelRow>
                         <ToggleControl
@@ -249,6 +253,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <FeaturedGuideinWholeAdmin />,
             body
         );
+    }
+    // keep the editor panel open by default
+    if (!localStorage.getItem('cwg-editor-panel-open')){
+        dispatch('core/edit-post').toggleEditorPanelOpened('welcome-guide-plugin-document-setting-panel/welcome-guide');
+        localStorage.setItem('cwg-editor-panel-open', 'yes');
     }
 
 });
