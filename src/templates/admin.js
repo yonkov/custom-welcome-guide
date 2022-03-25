@@ -255,8 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
     // keep the editor panel open by default
-    if (!localStorage.getItem('cwg-editor-panel-open')){
-        dispatch('core/edit-post').toggleEditorPanelOpened('welcome-guide-plugin-document-setting-panel/welcome-guide');
+    if (!localStorage.getItem('cwg-editor-panel-open')) {
+        if(dispatch('core/edit-post') !==null){
+            dispatch('core/edit-post').toggleEditorPanelOpened('welcome-guide-plugin-document-setting-panel/welcome-guide');
+        }
         localStorage.setItem('cwg-editor-panel-open', 'yes');
     }
 

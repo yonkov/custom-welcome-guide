@@ -4,7 +4,7 @@
  * Description:       Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users or content creators through a friendly user admin interface. Customize the Welcome Guide component for the Block editor.
  * Requires at least: 5.4
  * Requires PHP:      5.6
- * Version:           1.0.6
+ * Version:           1.0.7
  * Author:            Atanas Yonkov, Vlastimir Samolov
  * Author URI:        https://github.com/yonkov/custom-welcome-guide
  * License:           GPL-2.0-or-later
