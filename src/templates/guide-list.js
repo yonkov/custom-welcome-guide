@@ -29,7 +29,7 @@ const WelcomeGuideList = (props) => {
         <Fragment>
             {posts.length == 0 &&
                 <span>{__('No guides found. Get started by ', 'custom-welcome-guide')}
-                    <a href={`${siteUrl + "/wp-admin/edit.php?post_type=guides"}`}>{`${__('adding a guide', 'custom-welcome-guide')}`}</a>
+                    <a href={`${siteUrl + "/wp-admin/edit.php?post_type=guides"}`}>{`${__('adding a guide', 'custom-welcome-guide')}`}</a>.
                 </span>}
             {posts.length > 0 &&
                 parentPosts.map((post, index) => (

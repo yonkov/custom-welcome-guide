@@ -145,9 +145,9 @@ class App extends Component {
         return (
             <Fragment>
                 <h2><Icon icon="admin-plugins" /> {__('Welcome Guide Options', 'custom-welcome-guide')}</h2>
-                <p>{__('The settings for the Custom Welcome Guide plugin.', 'custom-welcome-guide')}</p>
-                {posts.length == 0 && <><p>You haven't created any guides yet. Get started by <a href={`${siteUrl + "/wp-admin/edit.php?post_type=guides"}`}>{`${__('adding a guide.', 'custom-welcome-guide')}`}</a></p></>
-                }
+                <p>{__('The settings for the Custom Welcome Guide plugin. ', 'custom-welcome-guide')}
+                {__('For help, please refer to the plugin\'s ', 'custom-welcome-guide')}<a href="https://wordpress.org/plugins/custom-welcome-guide/#faq-header">{__('faq', 'custom-welcome-guide')}.</a></p>
+                {posts.length == 0 && <><p><strong>{__('You haven\'t created any guides yet. Get started by ', 'custom-welcome-guide')} <a href={`${siteUrl + "/wp-admin/edit.php?post_type=guides"}`}>{`${__('adding a guide.', 'custom-welcome-guide')}`}</a></strong></p></>}
                 <PanelBody>
                     <PanelRow>
                         <ToggleControl
@@ -254,12 +254,15 @@ document.addEventListener('DOMContentLoaded', () => {
             body
         );
     }
+
+});
+
+window.addEventListener('load', () => {
     // keep the editor panel open by default
     if (!localStorage.getItem('cwg-editor-panel-open')) {
         if(dispatch('core/edit-post') !==null){
             dispatch('core/edit-post').toggleEditorPanelOpened('welcome-guide-plugin-document-setting-panel/welcome-guide');
+            localStorage.setItem('cwg-editor-panel-open', 'yes');
         }
-        localStorage.setItem('cwg-editor-panel-open', 'yes');
     }
-
 });

@@ -1,10 +1,10 @@
 === Custom Welcome Guide ===
 Contributors:      nravota12, VlastimirSamolov
 Tags:              user-onboarding, tour, introduction, walkthrough, block-editor
-Tested up to:      5.9
+Tested up to:      6.0
 Requires at least: 5.4
 Requires PHP:      5.6
-Stable tag:        1.0.7
+Stable tag:        1.0.8
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ The featured guide should work as expected, however you will not be able to see 
 4. Custom Welcome Guide Popup
 
 == Changelog ==
+
+= 1.0.8 - September 2022 =
+Fix open the sidebar panel by default and improve ui
 
 = 1.0.7 - March 2022 =
 Fix js error for admin pages without the block editor
