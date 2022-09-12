@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * Plugin Name:       Custom Welcome Guide
  * Description:       Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users or content creators through a friendly user admin interface. Customize the Welcome Guide component for the Block editor.
  * Requires at least: 5.4
@@ -10,6 +10,24 @@
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       custom-welcome-guide
+
+=====================================================================================
+Copyright (C) 2021 Atanas Yonkov and Vlastimir Samolov
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with WordPress; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+=====================================================================================
  */
 
 /**
