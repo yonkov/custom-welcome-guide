@@ -4,7 +4,7 @@
  * Description:       Create interactive step-by-step introduction tours/tutorials/walkthrough guides for your admin users or content creators through a friendly user admin interface. Customize the Welcome Guide component for the Block editor.
  * Requires at least: 5.4
  * Requires PHP:      5.6
- * Version:           1.0.8
+ * Version:           1.0.9
  * Author:            Atanas Yonkov, Vlastimir Samolov
  * Author URI:        https://github.com/yonkov/custom-welcome-guide
  * License:           GPL-2.0-or-later
@@ -12,7 +12,7 @@
  * Text Domain:       custom-welcome-guide
 
 =====================================================================================
-Copyright (C) 2021 Atanas Yonkov and Vlastimir Samolov
+Copyright (C) 2021 - present Atanas Yonkov and Vlastimir Samolov
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -35,109 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 if ( ! defined( 'ABSPATH' ) ) {
     exit( 'Woof Woof Woof!' );
-}
-
-if ( ! function_exists( 'custom_welcome_guide_fs' ) ) {
-    // Create a helper function for easy SDK access.
-    function custom_welcome_guide_fs() {
-        global $custom_welcome_guide_fs;
-
-        if ( ! isset( $custom_welcome_guide_fs ) ) {
-            // Include Freemius SDK.
-            require_once dirname( __FILE__ ) . '/freemius/start.php';
-
-            $custom_welcome_guide_fs = fs_dynamic_init(
-                [
-                    'id'             => '9840',
-                    'slug'           => 'custom-welcome-guide',
-                    'type'           => 'plugin',
-                    'public_key'     => 'pk_46d1336692c127841f85ebcb2a2cf',
-                    'is_premium'     => false,
-                    'has_addons'     => false,
-                    'has_paid_plans' => false,
-                    'menu'           => [
-                        'account' => false,
-                        'support' => false,
-                    ],
-                ]
-            );
-        }
-
-        return $custom_welcome_guide_fs;
-    }
-
-    // Init Freemius.
-    custom_welcome_guide_fs();
-    // Signal that SDK was initiated.
-    do_action( 'custom_welcome_guide_fs_loaded' );
-}
-
-if ( ! function_exists( 'custom_welcome_guide_fs' ) ) {
-    // Create a helper function for easy SDK access.
-    function custom_welcome_guide_fs() {
-        global $custom_welcome_guide_fs;
-
-        if ( ! isset( $custom_welcome_guide_fs ) ) {
-            // Include Freemius SDK.
-            require_once dirname( __FILE__ ) . '/freemius/start.php';
-
-            $custom_welcome_guide_fs = fs_dynamic_init(
-                [
-                    'id'             => '9840',
-                    'slug'           => 'custom-welcome-guide',
-                    'type'           => 'plugin',
-                    'public_key'     => 'pk_46d1336692c127841f85ebcb2a2cf',
-                    'is_premium'     => false,
-                    'has_addons'     => false,
-                    'has_paid_plans' => false,
-                    'menu'           => [
-                        'account' => false,
-                        'support' => false,
-                    ],
-                ]
-            );
-        }
-
-        return $custom_welcome_guide_fs;
-    }
-
-    // Init Freemius.
-    custom_welcome_guide_fs();
-    // Signal that SDK was initiated.
-    do_action( 'custom_welcome_guide_fs_loaded' );
-}if ( ! function_exists( 'custom_welcome_guide_fs' ) ) {
-    // Create a helper function for easy SDK access.
-    function custom_welcome_guide_fs() {
-        global $custom_welcome_guide_fs;
-
-        if ( ! isset( $custom_welcome_guide_fs ) ) {
-            // Include Freemius SDK.
-            require_once dirname( __FILE__ ) . '/freemius/start.php';
-
-            $custom_welcome_guide_fs = fs_dynamic_init(
-                [
-                    'id'             => '9840',
-                    'slug'           => 'custom-welcome-guide',
-                    'type'           => 'plugin',
-                    'public_key'     => 'pk_46d1336692c127841f85ebcb2a2cf',
-                    'is_premium'     => false,
-                    'has_addons'     => false,
-                    'has_paid_plans' => false,
-                    'menu'           => [
-                        'account' => false,
-                        'support' => false,
-                    ],
-                ]
-            );
-        }
-
-        return $custom_welcome_guide_fs;
-    }
-
-    // Init Freemius.
-    custom_welcome_guide_fs();
-    // Signal that SDK was initiated.
-    do_action( 'custom_welcome_guide_fs_loaded' );
 }
 
 /* Enqueue scripts and styles for the WordPress Block editor */
